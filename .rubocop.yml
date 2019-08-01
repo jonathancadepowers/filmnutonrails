@@ -1,0 +1,15 @@
+require: rubocop-rails
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'test/**/*'
+    - 'lib/tasks/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'config.ru'
+    - 'bin/**/*'
+Documentation:
+    Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

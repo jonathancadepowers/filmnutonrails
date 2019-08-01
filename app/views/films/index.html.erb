@@ -1,0 +1,32 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 20%" scope="col">Film</th>
+      <th style="width: 14.29%" scope="col">Rating</th>
+      <th style="width: 14.29%" scope="col">Watched On</th>
+      <th style="width: 14.29%" scope="col">Directed By</th>
+      <th style="width: 14.29%" scope="col">Released On</th>
+      <th style="width: 14.29%" scope="col">Running Time</th>
+      <th style="width: 8.55%" scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @all_films.each do |f| %>
+  		<tr>
+  		  <th scope="row">
+          <%= link_to f.title, f.url, :target => "_blank" %>
+        </th>
+  		  <td>
+          <% for i in 1..f.rating do %>
+            <%= fa_icon "star" %>
+          <% end %>          
+        </td>
+  		  <td><%= f.watched_on.strftime("%b %d, %Y") %></td>
+  		  <td><%= f.directors %></td>
+  		  <td><%= f.release_year %></td>
+  		  <td><%= running_time_formatted(f.running_time) %> minutes</td>
+  		  <td class="blank_links"><a href ="<%= edit_film_path(f.id) %>"><%= fa_icon "edit" %></a></td>
+  		</tr>
+  	<% end %>
+  </tbody>
+</table>
