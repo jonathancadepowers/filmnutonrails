@@ -1,8 +1,20 @@
+require "uri"
+
 namespace :qt do
   desc "TODO"
-  task qt: :environment do
+  task qt: :environment do	
+	
+	def return_xss_safe_url(url)
+		scheme = URI(url).scheme
 
-  	puts new_film_path
+		if scheme == "http" or scheme == "https"
+			url
+		else
+			url = "#"
+		end
+	end
+
+	puts return_xss_safe_url("https://www.imdb.com/title/tt0031381/")
 
   end
 

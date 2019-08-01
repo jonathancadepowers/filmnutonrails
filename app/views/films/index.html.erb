@@ -14,7 +14,7 @@
   	<% @all_films.each do |f| %>
   		<tr>
   		  <th scope="row">
-          <%= link_to f.title, f.url, :target => "_blank" %>
+          <%= link_to f.title, return_xss_safe_url(f.url), :target => "_blank" %>
         </th>
   		  <td>
           <% for i in 1..f.rating do %>
