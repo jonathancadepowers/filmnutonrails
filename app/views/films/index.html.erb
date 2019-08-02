@@ -11,22 +11,22 @@
     </tr>
   </thead>
   <tbody>
-  	<% @all_films.each do |f| %>
-  		<tr>
-  		  <th scope="row">
+    <% @all_films.each do |f| %>
+      <tr>
+        <th scope="row">
           <%= link_to f.title, return_xss_safe_url(f.url), :target => "_blank" %>
         </th>
-  		  <td>
+        <td>
           <% for i in 1..f.rating do %>
             <%= fa_icon "star" %>
-          <% end %>          
+          <% end %>
         </td>
-  		  <td><%= f.watched_on.strftime("%b %d, %Y") %></td>
-  		  <td><%= f.directors %></td>
-  		  <td><%= f.release_year %></td>
-  		  <td><%= running_time_formatted(f.running_time) %> minutes</td>
-  		  <td class="blank_links"><a href ="<%= edit_film_path(f.id) %>"><%= fa_icon "edit" %></a></td>
-  		</tr>
-  	<% end %>
+        <td><%= f.watched_on.strftime("%b %d, %Y") %></td>
+        <td><%= f.directors %></td>
+        <td><%= f.release_year %></td>
+        <td><%= running_time_formatted(f.running_time) %> minutes</td>
+        <td class="blank_links"><a href ="<%= edit_film_path(f.id) %>"><%= fa_icon "edit" %></a></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

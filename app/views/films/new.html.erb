@@ -1,58 +1,58 @@
 <%# TODO: Move the below code into a partial. %>
 <%# TODO: The "new" and "edit" views are too duplicative. %>
 <%= bootstrap_form_for(@film, label_errors: true) do |f| %>
-	<%= f.alert_message "Please fix the errors below." %>
-	<p style="margin-top:20px;">
-		<%= f.text_field :title,
+  <%= f.alert_message "Please fix the errors below." %>
+  <p style="margin-top:20px;">
+    <%= f.text_field :title,
 			:required => true,
 			:size=>"50"
-		%>		
-	</p>
-	<p>
-		<%= f.url_field :url,
+	%>
+  </p>
+  <p>
+    <%= f.url_field :url,
 			help: "The IMDB URL for this film.",
 			label: "URL",
 			:size=>"50",
 			:required => true
-		%>
-	</p>
-	<p>
-		<%= f.select :rating, 
+	%>
+  </p>
+  <p>
+    <%= f.select :rating, 
 			[5, 4, 3, 2, 1], 
 			:required => true,
 			:include_blank => true
-		%>
-	</p>
-	<p>
-		<%= f.date_field :watched_on,
+	%>
+  </p>
+  <p>
+    <%= f.date_field :watched_on,
 			label: "Watched On",
 			max: Date.today,
 			:required => true,
 			:value => Time.now.strftime("%Y-%m-%d")
-		%>
-	</p>
-	<p>
-		<%= f.text_field :directors,
+	%>
+  </p>
+  <p>
+    <%= f.text_field :directors,
 			:size=>"50",
 			:required => true
-		%>
-	</p>
-	<p>
-		<%= f.number_field :release_year,
+	%>
+  </p>
+  <p>
+    <%= f.number_field :release_year,
 			label: "Release Year",
 			min: 1900,
 			max: Date.today.strftime("%Y"),
 			:required => true
-		%>
-	</p>
-	<p>
-		<%= f.number_field :running_time,
+	%>
+  </p>
+  <p>
+    <%= f.number_field :running_time,
 			label: "Running Time",
 			min: 25, max: 500,
 			:required => true
-		%>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
+	%>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
