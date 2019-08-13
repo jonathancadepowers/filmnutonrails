@@ -3,24 +3,12 @@
 class FilmsController < ApplicationController
   def create
     @film = Film.new(film_params)
-    if @film.save == true
-      flash[:notice] = "New film added."
-      redirect_to films_path
-    else
-      render action: "new"
-    end
+    super # Parent method lives in ApplicationController.
   end
 
   def destroy
     @film = Film.find(params[:id])
-    @test = @film.destroy
-    if @film.destroyed? == true
-      flash[:notice] = "\"#{@film.title}\" was deleted!"
-    else
-      flash[:error] = "An error occured while
-        attempting to delete \"#{@film.title}\"."
-    end
-    redirect_to films_path
+    super # Parent method lives in ApplicationController.
   end
 
   def edit
@@ -36,13 +24,8 @@ class FilmsController < ApplicationController
   end
 
   def update
-    @film = Film.find(params[:id])
-    if @film.update(film_params) == true
-      flash[:notice] = "\"#{@film.title}\" was updated."
-      redirect_to films_path
-    else
-      render action: "edit"
-    end
+    @result = Film.find(params[:id]).update(film_params)
+    super # Parent method lives in ApplicationController.
   end
 
   private

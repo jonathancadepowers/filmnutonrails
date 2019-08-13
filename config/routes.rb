@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root 'films#index'
+  root 'blog_posts#index'
   resources :films
+  resources :blog_posts do
+    resources :comments
+  end
 end

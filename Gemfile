@@ -76,3 +76,4 @@ gem "bootstrap_form", ">= 4.2.0"
 gem "font-awesome-rails"
 gem "brakeman"
 gem 'htmlbeautifier'
+gem 'toastr-rails'

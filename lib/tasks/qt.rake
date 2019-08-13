@@ -1,20 +1,10 @@
 require "uri"
 
 namespace :qt do
-  desc "TODO"
+  desc "Commonly used troubleshooting and testing tasks."
   task qt: :environment do	
 	
-	def return_xss_safe_url(url)
-		scheme = URI(url).scheme
-
-		if scheme == "http" or scheme == "https"
-			url
-		else
-			url = "#"
-		end
-	end
-
-	puts return_xss_safe_url("https://www.imdb.com/title/tt0031381/")
+		
 
   end
 
@@ -29,15 +19,16 @@ namespace :qt do
 		release_year: 1939,
 		running_time: 238)
 
-  end
+	end
+	
+	task create_comment: :environment do
+
+		blog_post = BlogPost.find(15)
+		puts blog_post.comments.create(
+			author: "SRobinson",
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet euismod justo, nec bibendum nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vestibulum ac augue non congue. Sed in odio ac orci commodo imperdiet a vel dui. Morbi in mi ac felis congue ullamcorper. In quis porta nulla, ut ultricies magna. Vivamus suscipit risus est, aliquet mollis turpis pharetra a."
+		)
+
+	end
 
 end
-
-# Common Tasks
-# --------------------
-
-# Film.all.each do |film|
-	
-# 	TODO
-
-# end

@@ -1,9 +1,42 @@
  /*
  *= require rails_bootstrap_forms
  *= require font-awesome
+ *= require toastr
+ *= require_tree .
+ *= require_self
  */
 @import "bootstrap";
+@import "toastr";
 
+/* Displays links in plain black with no styling. Good for linked images. */
 .blank_links a {
     color: black;
+    text-decoration: none;
+}
+
+/* Controls all Toastr notifications. */
+.fade {
+	transition-duration: 1s;
+}
+
+/* Controls all Toastr notifications. */
+.toast-success {
+	background-color: #D4EDDA;
+}
+
+/* Controls all Toastr notifications. */
+.toast-message label {
+	color: #155724;
+}
+
+/* Controls all Toastr notifications. */
+#toast-container>div {
+	color: #155724;
+}
+
+/* Controls all Toastr notifications. */
+#toast-container>.toast-success {
+	/* Font-size for the icon is 26px. */
+	/* Font Awesome icon: check-square */
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAADTklEQVRIid2Wa2gUVxSAv7s7s7uZmG0KTYW2eVBLo9b4qOkirRDsH/8EAtqo2KQR6yPaNQ1K1RWDzyapNvERfCKCUMLWPmxa0IhxE6VFClaUamMiSKNBkzWzlJZWm5nJ7Q+TaeK6cXcp/uj5Mdw598z5uOdx54ireidPQxxPhQIoQwsJCyzDLGg9HeJw3X6u/9yOlDIhZ0IIxudNYNmalcya/TaKqpwDgiNAlmEUfHe8qbyheg8RPZIwBEBKyY32G9Ss38afv/9BYXERiqoEYVjoQidbaKjeTbinF9MwEoYMiWkYhO/2srd6N63NZ229DTpUd4CIHkka8KhE+nQOfrovGtT5SwemYSbl1OFwMMabNkJnGiad1zqiQcnkBMDpdDK3dB6b6rcyaVreiL3hPpVHP0xEtFSNkuVlLPK/T1paGnnTJlNZ5uf61fYo26T7SFEUFi4tZfGqJXif8SIcgpdyMimYPeux9jFB2phUfDNnkDE2I2ovRdMoXbGIxauW2rmxTJOfLlzk28+/iR+kpWpUbKhkf/AwO4/s4tWJuSAGT6IqLFtdzoqPPsCb7gVgwBrg/JlzVFUEuNt9J35Q4bwiisvm407xMNX3OutrNpKZnYmqqixcUkJJeRkpmgaARHLl4mVqN2zn1s2uWAF6fDHo4T7u//UAt8eDoij4ZvpoaDzI5R8vUVhchCfFgwQMw6D1VIjawDbCPeGYkJgnamsOcahuH5G+CA8rVDAu9xXmvjffhgB833Ke+s07ngiJCbIsi+DRRuo2fcJvkYe3hZCDaZISs9+g9WQL29duobvr9hMhMEofGf0GTcETuNxuVq7z89zzGQhAAqebTrH343p67/TEBRkVNCRNwa8ZsCwqNq4m/dl0LrT9wM6qGvR7etyQuED9f/fz1WdfoPfpTMibyPFjwYQhI0BOxYllWjEN25pDtDWHEnKuqqq9tosh/00fLrcrIUejicvtIv+tN6JB/sCHZOZk/WegrJez8Qcq7Xc7dFPypxKoraJ+8w5u3ezCSPIvq6oq2eNyWLNlHZOnT7H1Yti4tQAo6P71Nicav6TjWgcDlkSIf53IoYewr77B5pUIBMIhyH1tPHPefYcXsl5ECGEPJ+J/N9f9A2xaKVMUksmkAAAAAElFTkSuQmCC") !important;
 }

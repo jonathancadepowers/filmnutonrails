@@ -1,5 +1,5 @@
 namespace :batch_upload do
-  desc "TODO"
+  desc "Parses a CSV of films and ingests them into the app's database."
   task upload_films: :environment do
 
   	films = CSV.foreach("/Users/jpowers/desktop/sites/filmnut/lib/tasks/files/film_export.csv", headers:true) do |row|
