@@ -1,0 +1,50 @@
+.film-form-hidden {
+  visibility:hidden;
+}
+
+.film-form-visible {
+  visibility:visible;
+}
+
+.tmdb-container {
+  padding: 15px;
+  border-radius:8px;
+  width: 521px;
+  margin-top: 10px;
+  background-color: #6C757D;
+}
+
+.tmdb-container-expanded {
+  padding: 15px;
+  border-radius:8px;
+  width: 521px;
+  margin-top: 10px;
+  color: white;
+  background-color: #6C757D;
+}
+
+.tmdb-search-field {
+  display:inline !important;
+  width:400px !important;
+  margin-right:7px !important;
+}
+
+.tmdb-search-button {
+  display:inline !important;
+  position:relative!important;
+  top:-1px!important;
+}
+
+.tmdb-results-hidden {
+  visibility:hidden;  
+}
+
+.tmdb-results-visible {
+  margin-top: 5px;
+  background-color: #F8F9FA;
+  border-radius: 6px;
+  padding: 10px;
+  color: black;
+  margin-top: 10px;
+}
+

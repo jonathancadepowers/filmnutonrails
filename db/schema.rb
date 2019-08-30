@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_014232) do
+ActiveRecord::Schema.define(version: 2019_08_15_031623) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.string "title"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2019_08_10_014232) do
     t.string "directors"
     t.integer "release_year"
     t.float "running_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tv_shows", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.integer "rating"
+    t.datetime "watched_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

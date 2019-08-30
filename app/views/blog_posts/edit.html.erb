@@ -1,20 +1,21 @@
 <%= render "form" %>
-<%-# TODO: Only show the div below if the BlogPost has >1 comments. -%>
-<div class="shadow-none p-3 mb-5 bg-light rounded">
-  <h4>Comments</h4>
-  <% @comments.map do |c| %>
-    <div id="comment-<%= c.id %>">
-      <p>
-        <%= fa_icon "comments" %>
-        <b><%= c.author %></b>
-        <span class="comment_timestamp"><%= c.created_at.strftime("%m/%d/%y") %></span>
-      </p>
-      <p data-js-comment-id=<%= c.id %> class="blank_links comment_body_paragraph">
-        <%= c.body %>
-        <%= link_to blog_post_comment_path(@blog_post,c), remote: true, method: :delete, data: { confirm: "You sure?" } do %>
-          <%= fa_icon "trash" %>
-        <% end %>
-      </p>
-    </div>
-  <% end %>
-</div>
+<% if @blog_post.comments.count > 0 %>
+  <div id="comments-container" class="shadow-none p-3 mb-5 bg-light rounded">
+    <h4>Comments</h4>
+    <% @comments.map do |c| %>
+      <div id="comment-<%= c.id %>">
+        <p>
+          <%= fa_icon "comments" %>
+          <b><%= c.author %></b>
+          <span class="comment_timestamp"><%= c.created_at.strftime("%m/%d/%y") %></span>
+        </p>
+        <p data-js-comment-id=<%= c.id %> class="blank_links comment_body_paragraph">
+          <%= c.body %>
+          <%= link_to blog_post_comment_path(@blog_post,c), remote: true, method: :delete, data: { confirm: "You sure?" } do %>
+            <%= fa_icon "trash" %>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -77,3 +77,5 @@ gem "font-awesome-rails"
 gem "brakeman"
 gem 'htmlbeautifier'
 gem 'toastr-rails'
+gem 'tinymce-rails'
+gem 'themoviedb'

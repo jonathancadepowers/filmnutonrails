@@ -9,7 +9,7 @@
   <p>
     <%= f.text_area :body,
 			label: "Body",
-			:required => true
+      class: "tinymce"
 	%>
   </p>
   <p>
@@ -26,3 +26,5 @@
     <% end %>
   </p>
 <% end %>
+
+<%= tinymce %>

@@ -1,0 +1,44 @@
+<%= bootstrap_form_for(@tv_show, label_errors: true) do |f| %>
+  <%= f.alert_message "Fix the errors below:" %>
+  <p>
+    <%= f.text_field :title,
+			:required => true,
+			:size=>"50"
+	%>
+  </p>
+  <p>
+    <%= f.url_field :url,
+			label: "URL",
+			:size=>"50",
+			:required => true
+	%>
+  </p>
+  <p>
+    <%= f.select :rating, 
+			[5, 4, 3, 2, 1], 
+			:required => true,
+			:include_blank => true
+	%>
+  </p>
+  <p>
+    <%= f.date_field :watched_on,
+			label: "Watched On",
+			max: Date.today,
+			:required => true,
+			:value => Time.now.strftime("%Y-%m-%d")
+	%>
+  </p>
+  <p>
+    <%-# Only shows a "delete" button if the show exists. -%>
+    <% if @tv_show.id.blank? == false %>
+      <%= link_to 'Delete Film',
+                @tv_show,
+                method: :delete,
+                data: { confirm: 'Sounds dicey! You sure?' }
+        %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>

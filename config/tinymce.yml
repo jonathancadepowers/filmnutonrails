@@ -1,0 +1,13 @@
+menubar: false
+toolbar:
+  - styleselect | bold italic | image | link | emoticons | forecolor backcolor | numlist bullist | codesample | spellchecker | "table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | code | searchreplace |  | undo redo
+plugins:
+  - image
+  - link
+  - code
+  - codesample
+  - emoticons
+  - lists
+  # - spellchecker #TODO: Doesn't work.
+  # - table #TODO: Doesn't work. 
+  - searchreplace

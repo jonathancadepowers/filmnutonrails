@@ -2,12 +2,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require activestorage
+//= require tinymce
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
 
-function get_default_success_toastr (title, message) {
+function default_toastr (type, title, message) {
   toastr.options = {
     closeButton: true, // TODO: This option doesn't work: https://github.com/CodeSeven/toastr/issues/623
     debug: false,
@@ -18,12 +19,12 @@ function get_default_success_toastr (title, message) {
     onclick: null,
     showDuration: '300',
     hideDuration: '1000',
-    timeOut: '3000',
+    timeOut: '3500',
     extendedTimeOut: '1000',
     showEasing: 'swing',
     hideEasing: 'linear',
     showMethod: 'fadeIn',
     hideMethod: 'fadeOut'
   }
-  toastr['success'](message, title)
+  toastr[type](message, title)
 }

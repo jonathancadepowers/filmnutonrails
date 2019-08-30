@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  url: MyString
+  rating: 1
+  watched_on: 2019-08-14 22:16:23
+
+two:
+  title: MyString
+  url: MyString
+  rating: 1
+  watched_on: 2019-08-14 22:16:23

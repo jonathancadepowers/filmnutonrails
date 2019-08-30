@@ -28,6 +28,16 @@ class FilmsController < ApplicationController
     super # Parent method lives in ApplicationController.
   end
 
+  def tmdb_search
+    results = TheMovieDb.tmdb_search(params[:title])
+    data = results.map { |movie| { tmdb_id: movie["id"], title: movie["title"], year: movie["release_date"] } }
+    render json: data
+  end
+
+  def tmdb_get_film_attributes
+    render json: TheMovieDb.tmdb_get_film_attributes(params[:tmdb_id])
+  end
+
   private
 
   def film_params
