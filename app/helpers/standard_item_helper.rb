@@ -10,7 +10,10 @@ module StandardItemHelper
   end
 
   def nice_controller_name(controller_name)
-    controller_name.singularize.sub("_", " ").titleize
+    { "films" => "film",
+      "tv_shows" => "show",
+      "blog_posts" => "post",
+      "books" => "book" }[controller_name]
   end
 
   def object_label(controller_name)

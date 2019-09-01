@@ -9,8 +9,8 @@ class StandardItemController < ApplicationController
   def create
     object = set_object
     if object.save == true
-      flash[:notice] = "New
-        #{nice_controller_name(controller_name)} added."
+      flash[:notice] = "The new
+        #{nice_controller_name(controller_name)} was added."
       redirect_to(controller: controller_name.to_s, action: "index")
     else
       render action: "new"
@@ -23,10 +23,10 @@ class StandardItemController < ApplicationController
     object.destroy
     if object.destroyed?
       flash[:notice] = "The
-        #{nice_controller_name(controller_name)} was deleted!"
+        #{nice_controller_name(controller_name)} was deleted."
     else
       flash[:error] = "An error occured while
-        attempting to delete a
+        attempting to delete the
         #{nice_controller_name(controller_name)}."
     end
     redirect_to(controller: controller_name.to_s, action: "index")

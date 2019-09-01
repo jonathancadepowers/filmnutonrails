@@ -42,6 +42,15 @@
             <a class="dropdown-item" href="<%= new_tv_show_path %>">Submit New Show</a></a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon "book" %>&nbsp;&nbsp;Books
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= books_path %>">All Books</a>
+            <a class="dropdown-item" href="<%= new_book_path %>">Submit New Book</a></a>
+          </div>
+        </li>
         </ul>
       </div>
     </nav>
