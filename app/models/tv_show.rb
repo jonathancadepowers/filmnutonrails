@@ -4,6 +4,6 @@ class TvShow < ApplicationRecord
   validates :title,
             :url,
             :rating,
-            :watched_on,
+            :consumed_on,
             presence: true
 end

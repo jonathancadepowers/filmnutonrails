@@ -4,7 +4,7 @@ class Film < ApplicationRecord
   validates :title,
             :url,
             :rating,
-            :watched_on,
+            :consumed_on,
             :directors,
             :release_year,
             :running_time,

@@ -11,7 +11,7 @@ namespace :batch_upload do
   	  new_film.title = row["film"]
   	  new_film.url = row["imdb_url"]
   	  new_film.rating = row["rating"]
-  	  new_film.watched_on = Time.at(row["timestamp"].to_i).to_datetime
+  	  new_film.consumed_on = Time.at(row["timestamp"].to_i).to_datetime
   	  new_film.directors = row["directors"]
   	  new_film.release_year = row["release_year"]
   	  new_film.running_time = row["running_time"]

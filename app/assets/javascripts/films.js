@@ -57,14 +57,14 @@ $(document).on('turbolinks:load', function () {
         data: { tmdb_id: $(this).attr('tmdb_id') },
         dataType: 'text',
         success: function (data) {
-          // Displays the form that users must complete to submit a film. 
+          // Displays the form that users must complete to submit a film.
           $('.film-form-hidden')
             .removeClass('film-form-hidden')
             .addClass('film-form-visible')
-          
+
           // Removes the TMDB search box and search results.
           $('.tmdb-container-expanded').remove()
-          
+
           // Pushes film attributes into the film form.
           var attributes = JSON.parse(data)
           $('#film_directors').val(attributes['directors'])

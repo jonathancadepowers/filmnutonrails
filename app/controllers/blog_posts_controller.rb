@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class BlogPostsController < ApplicationController
+class BlogPostsController < StandardItemController
   def create
     @blog_post = BlogPost.new(blog_post_params)
-    super # Parent method lives in ApplicationController.
+    super
   end
 
   def destroy
     @blog_post = BlogPost.find(params[:id])
-    super # Parent method lives in ApplicationController.
+    super
   end
 
   def edit
@@ -17,7 +17,7 @@ class BlogPostsController < ApplicationController
   end
 
   def index
-    @all_blog_posts = BlogPost.all.order("created_at DESC")
+    @all_blog_posts = BlogPost.all.order("updated_at DESC")
   end
 
   def new
@@ -25,8 +25,9 @@ class BlogPostsController < ApplicationController
   end
 
   def update
-    @result = BlogPost.find(params[:id]).update(blog_post_params)
-    super # Parent method lives in ApplicationController.
+    @blog_post = BlogPost.find(params[:id])
+    @result = @blog_post.update(blog_post_params)
+    super
   end
 end
 

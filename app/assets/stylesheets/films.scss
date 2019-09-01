@@ -1,50 +1,49 @@
 .film-form-hidden {
-  visibility:hidden;
+  visibility: hidden;
 }
 
 .film-form-visible {
-  visibility:visible;
+  visibility: visible;
 }
 
 .tmdb-container {
   padding: 15px;
-  border-radius:8px;
+  border-radius: 8px;
   width: 521px;
   margin-top: 10px;
-  background-color: #6C757D;
+  background-color: #6c757d;
 }
 
 .tmdb-container-expanded {
   padding: 15px;
-  border-radius:8px;
+  border-radius: 8px;
   width: 521px;
   margin-top: 10px;
   color: white;
-  background-color: #6C757D;
+  background-color: #6c757d;
 }
 
 .tmdb-search-field {
-  display:inline !important;
-  width:400px !important;
-  margin-right:7px !important;
+  display: inline !important;
+  width: 400px !important;
+  margin-right: 7px !important;
 }
 
 .tmdb-search-button {
-  display:inline !important;
-  position:relative!important;
-  top:-1px!important;
+  display: inline !important;
+  position: relative !important;
+  top: -1px !important;
 }
 
 .tmdb-results-hidden {
-  visibility:hidden;  
+  visibility: hidden;
 }
 
 .tmdb-results-visible {
   margin-top: 5px;
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   border-radius: 6px;
   padding: 10px;
   color: black;
   margin-top: 10px;
 }
-

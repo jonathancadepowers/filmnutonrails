@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class FilmsController < ApplicationController
+class FilmsController < StandardItemController
   def create
     @film = Film.new(film_params)
-    super # Parent method lives in ApplicationController.
+    super
   end
 
   def destroy
     @film = Film.find(params[:id])
-    super # Parent method lives in ApplicationController.
+    super
   end
 
   def edit
@@ -16,7 +16,7 @@ class FilmsController < ApplicationController
   end
 
   def index
-    @all_films = Film.all.order("watched_on DESC")
+    @all_films = Film.all.order("updated_at DESC")
   end
 
   def new
@@ -24,13 +24,18 @@ class FilmsController < ApplicationController
   end
 
   def update
-    @result = Film.find(params[:id]).update(film_params)
-    super # Parent method lives in ApplicationController.
+    @film = Film.find(params[:id])
+    @result = @film.update(film_params)
+    super
   end
 
   def tmdb_search
     results = TheMovieDb.tmdb_search(params[:title])
-    data = results.map { |movie| { tmdb_id: movie["id"], title: movie["title"], year: movie["release_date"] } }
+    data = results.map do |movie|
+      { tmdb_id: movie["id"],
+        title: movie["title"],
+        year: movie["release_date"] }
+    end
     render json: data
   end
 
@@ -45,7 +50,7 @@ class FilmsController < ApplicationController
       :title,
       :url,
       :rating,
-      :watched_on,
+      :consumed_on,
       :directors,
       :release_year,
       :running_time

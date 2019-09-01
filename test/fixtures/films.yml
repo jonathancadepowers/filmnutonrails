@@ -4,7 +4,7 @@ one:
   title: MyString
   url: MyString
   rating: 1
-  watched_on: 2019-07-07 14:36:31
+  consumed_on: 2019-07-07 14:36:31
   directors: MyString
   release_year: 1
   running_time: 1.5
@@ -13,7 +13,7 @@ two:
   title: MyString
   url: MyString
   rating: 1
-  watched_on: 2019-07-07 14:36:31
+  consumed_on: 2019-07-07 14:36:31
   directors: MyString
   release_year: 1
   running_time: 1.5
