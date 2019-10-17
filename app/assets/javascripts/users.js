@@ -1,4 +1,4 @@
-// Handle response from user_controller#handle_admin_approval.
+// Handles response from user_controller#handle_admin_approval.
 $(document).on('turbolinks:load', function () {
   $('[ajax-toggle-admin-approval]').on('ajax:success', function (
     event,

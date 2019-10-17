@@ -1,4 +1,4 @@
-// Handle response from films_controller#tmdb_search.
+// Handles response from films_controller#tmdb_search.
 $(document).on('turbolinks:load', function () {
   $('[ajax-search-tmdb]').on('ajax:success', function (
     event,

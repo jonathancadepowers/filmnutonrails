@@ -1,4 +1,4 @@
-// Handle response from comments_controller#destroy
+// Handles response from comments_controller#destroy
 $(document).on('turbolinks:load', function () {
   $('[ajax-delete-comment]').on('ajax:success', function (
     event,
