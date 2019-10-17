@@ -9,7 +9,7 @@
           <b><%= c.author %></b>
           <span class="comment_timestamp"><%= c.created_at.strftime("%m/%d/%y") %></span>
         </p>
-        <p data-js-comment-id=<%= c.id %> class="blank_links comment_body_paragraph">
+        <p ajax-delete-comment="true" class="blank_links comment_body_paragraph">
           <%= c.body %>
           <%= link_to blog_post_comment_path(@blog_post,c), remote: true, method: :delete, data: { confirm: "You sure?" } do %>
             <%= fa_icon "trash" %>
