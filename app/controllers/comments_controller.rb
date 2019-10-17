@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
     @blog_post = BlogPost.find(params[:blog_post_id])
     @comment = Comment.find(params[:id])
     @comment.delete
-    # Pass data to the JavaScript helper to modify the user's page.
     data = {}
     data[:blog_post_comment_deleted] = @comment.destroyed?
     data[:blog_post_comment_count] = @blog_post.comments.count

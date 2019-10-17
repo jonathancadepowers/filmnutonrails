@@ -8,6 +8,7 @@
 //= require bootstrap-sprockets
 //= require toastr
 
+// Possible types: info, success, warning, error
 function default_toastr (type, title, message) {
   toastr.options = {
     closeButton: true, // TODO: This option doesn't work: https://github.com/CodeSeven/toastr/issues/623
@@ -27,4 +28,8 @@ function default_toastr (type, title, message) {
     hideMethod: 'fadeOut'
   }
   toastr[type](message, title)
+}
+
+function generic_error_toast () {
+  default_toastr('error', 'An error occured.', 'Sorry about that. Try again?')
 }

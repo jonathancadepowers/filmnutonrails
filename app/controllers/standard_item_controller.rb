@@ -5,6 +5,8 @@ class StandardItemController < ApplicationController
 
   layout "admin"
 
+  before_action :authenticate_user!
+
   # Generic instance creation method.
   def create
     object = set_object

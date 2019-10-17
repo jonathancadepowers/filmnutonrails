@@ -1,56 +1,53 @@
+// Handle response from films_controller#tmdb_search.
 $(document).on('turbolinks:load', function () {
-  // Searches TMDB for a film and returns results.
-  $('.tmdb-search-button').click(function () {
-    var title = $('.tmdb-search-field').val()
+  $('[ajax-search-tmdb]').on('ajax:success', function (
+    event,
+    data,
+    status,
+    xhr
+  ) {
+    if (xhr.responseJSON.length > 0) {
+      // At least one result was returned.
+      // Caches a DIV.
+      var $tmdb_results = $('.tmdb-results-hidden')
 
-    $.ajax({
-      url: '/films/tmdb_search',
-      data: { title: title },
-      dataType: 'text',
-      success: function (data) {
-        // Caches a DIV.
-        var $tmdb_results = $('.tmdb-results-hidden')
+      // Expands a DIV to hold search results.
+      $('.tmdb-container')
+        .removeClass('tmdb-container')
+        .addClass('tmdb-container-expanded')
 
-        // Expands a DIV to hold search results.
-        $('.tmdb-container')
-          .removeClass('tmdb-container')
-          .addClass('tmdb-container-expanded')
+      // Displays a nested DIV that holds search results.
+      $tmdb_results
+        .removeClass('tmdb-results-hidden')
+        .addClass('tmdb-results-visible')
 
-        // Displays a nested DIV that holds search results.
-        $tmdb_results
-          .removeClass('tmdb-results-hidden')
-          .addClass('tmdb-results-visible')
-
-        // Loops over each film search result.
-        // Lists each film by name, next to a checkbox.
-        var results = JSON.parse(data)
-        for (var i = 0; i < 5; i++) {
-          var obj = results[i]
-          $tmdb_results.append(
-            '<div class="form-check"><input id="checkbox" class="form-check-input" tmdb_id="' +
-              obj.tmdb_id +
-              '" type="checkbox"><label class="form-check-label">' +
-              obj.title +
-              ' (' +
-              obj.year.slice(0, 4) +
-              ')</label></div>'
-          )
-        }
-      },
-      error: function (exception) {
-        // Show an error toast.
-        default_toastr(
-          'error',
-          'Error: Could not search TMDB.',
-          'Sorry about that. Try again?'
+      // Loops over each film search result.
+      // Lists each film by name, next to a checkbox.
+      for (var i = 0; i < 5; i++) {
+        var obj = xhr.responseJSON[i]
+        $tmdb_results.append(
+          '<div class="form-check"><input id="checkbox" class="form-check-input" name="tmdb_search_result" tmdb_id="' +
+            obj.tmdb_id +
+            '" type="checkbox"><label class="form-check-label">' +
+            obj.title +
+            ' (' +
+            obj.year.slice(0, 4) +
+            ')</label></div>'
         )
       }
-    })
+    } else {
+      // Zero results were returned.
+      alert('No films were found. Enter a new search term.')
+    }
   })
+})
 
-  // Retrieves data about the selected film search result.
-  // Pushes film attributes into form fields.
-  $(document).on('change', 'input:checkbox', function () {
+// Retrieves data about the selected film search result.
+// Pushes film attributes into form fields.
+$(document).on(
+  'change',
+  "input[type='checkbox'][name='tmdb_search_result']",
+  function () {
     if (this.checked) {
       $.ajax({
         url: '/films/tmdb_get_film_attributes',
@@ -76,13 +73,9 @@ $(document).on('turbolinks:load', function () {
         },
         error: function (exception) {
           // Show an error toast.
-          default_toastr(
-            'error',
-            'Error: Could not get film data.',
-            'Sorry about that. Try again?'
-          )
+          generic_error_toast()
         }
       })
     }
-  })
-})
+  }
+)

@@ -1,0 +1,13 @@
+<% # Allows a user to request an additional "unlock email" in the event that they cannot access the original email. %>
+<% # URL for this page is: /users/unlock/new %>
+<%= bootstrap_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Resend unlock instructions" %>
+  </div>
+<% end %>
+</br>
+<%= render "devise/shared/links" %>

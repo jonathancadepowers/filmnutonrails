@@ -9,6 +9,7 @@ AllCops:
     - 'config/**/*'
     - 'config.ru'
     - 'bin/**/*'
+    - 'app/helpers/devise_helper.rb'
 Documentation:
     Enabled: false
 Style/StringLiterals:

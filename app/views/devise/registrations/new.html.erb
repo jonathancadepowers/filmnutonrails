@@ -1,0 +1,23 @@
+<% # Allows a new user to sign up. %>
+<% # URL for this page is: /users/sign_up %>
+<div class="alert alert-warning" role="alert">
+  This sign up page is only for those that have been invited to administer filmnut.org.</br>
+After completing the registration form below your account must be approved by Jonathan Powers before you can log in.
+</div>
+<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: pw_length_alert(@minimum_password_length) %>
+  </div>
+  <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+</br>
+<%= render "devise/shared/links" %>

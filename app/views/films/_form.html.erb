@@ -1,7 +1,9 @@
 <% if @film.id.blank? == true %>
-  <div class="form-group p-3 mb-2 text-white tmdb-container">
-    <input class="form-control tmdb-search-field" type="text" placeholder="Search TMDB..." name="tmdb-title">
-    <button class="btn btn-light tmdb-search-button" type="button">Search</button>
+  <div ajax-search-tmdb="true" class="form-group p-3 mb-2 text-white tmdb-container">
+    <%= form_with url: films_tmdb_search_path do |f| %>
+      <%= f.text_field :title, class: "form-control tmdb-search-field", placeholder: "Search TMDB..." %>
+      <%= f.submit class: "btn btn-light tmdb-search-button" %>
+    <% end %>
     <div class="tmdb-results-hidden">
     </div>
   </div>

@@ -1,5 +1,6 @@
+// Handle response from comments_controller#destroy
 $(document).on('turbolinks:load', function () {
-  $('[data-js-comment-id]').on('ajax:success', function (
+  $('[ajax-delete-comment]').on('ajax:success', function (
     event,
     data,
     status,
@@ -25,12 +26,7 @@ $(document).on('turbolinks:load', function () {
         "And just like that, pffft. It's gone!"
       )
     } else {
-      // Show an error toast.
-      default_toastr(
-        'error',
-        'Error: Comment was not deleted!',
-        'Uh oh! Something went wrong.'
-      )
+      generic_error_toast()
     }
   })
 })
