@@ -80,6 +80,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartkick (3.3.1)
     childprocess (1.0.1)
       rake (< 13.0)
     chromedriver-helper (2.1.1)
@@ -110,6 +111,8 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.0.0)
+      activesupport (>= 5)
     htmlbeautifier (1.3.1)
     httparty (0.17.0)
       mime-types (~> 3.0)
@@ -153,6 +156,8 @@ GEM
     minitest (5.11.3)
     msgpack (1.3.0)
     multi_xml (0.6.0)
+    name_of_person (1.1.1)
+      activesupport (>= 5.2.0)
     nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
@@ -161,6 +166,8 @@ GEM
     parser (2.6.3.0)
       ast (~> 2.4.0)
     popper_js (1.14.5)
+    prism-rails (1.19.0)
+      railties (>= 4.2, < 6)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -298,17 +305,21 @@ DEPENDENCIES
   brakeman
   byebug
   capybara (>= 2.15)
+  chartkick
   chromedriver-helper
   coffee-rails (~> 4.2)
   csv
   devise (~> 4.2)
   font-awesome-rails
+  groupdate
   htmlbeautifier
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
   listen (>= 3.0.5, < 3.2)
   meta_request
+  name_of_person (~> 1.1, >= 1.1.1)
+  prism-rails
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)

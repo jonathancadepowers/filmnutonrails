@@ -13,6 +13,7 @@ module StandardItemHelper
     { "films" => "film",
       "tv_shows" => "show",
       "blog_posts" => "post",
+      "artifacts" => "artifact",
       "books" => "book" }[controller_name]
   end
 

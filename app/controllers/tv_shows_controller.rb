@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class TvShowsController < StandardItemController
+  include Reportable
+  def all
+    @all_tv_shows = TvShow.all.order("title ASC")
+    @total_show_count = TvShow.count
+    @shows_watched_this_year = consumed_this_year(TvShow)
+    @shows_grouped_by_ratings = build_rating_chart(TvShow)
+    render layout: "main"
+  end
+
   def create
     @tv_show = TvShow.new(tv_show_params)
     super

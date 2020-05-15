@@ -1,5 +1,4 @@
-<%= bootstrap_form_for(@book, label_errors: true) do |f| %>
-  <%= f.alert_message "Fix the errors below:" %>
+<%= bootstrap_form_for(@book, label_errors: false) do |f| %>
   <p>
     <%= f.text_field :title,
 			:required => true,
@@ -9,6 +8,13 @@
   <p>
     <%= f.url_field :url,
 			label: "URL",
+			:size=>"50",
+			:required => true
+	%>
+  </p>
+  <p>
+    <%= f.text_field :authors,
+			label: "Author(s)",
 			:size=>"50",
 			:required => true
 	%>
@@ -24,12 +30,11 @@
     <%= f.date_field :consumed_on,
 			label: "Consumed On",
 			max: Date.today,
-			:required => true,
-			:value => Time.now.strftime("%Y-%m-%d")
+			:required => true
 	%>
   </p>
   <p>
-    <%-# Only shows a "delete" button if the show exists. -%>
+    <%-# Only shows a "delete" button if the book exists. -%>
     <% if @book.id.blank? == false %>
       <%= link_to 'Delete Book',
                 @book,

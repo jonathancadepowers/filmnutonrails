@@ -2,8 +2,8 @@
  *= require rails_bootstrap_forms
  *= require font-awesome
  *= require toastr
- *= require_tree .
  *= require_self
+ *= require prism
  */
 @import "bootstrap";
 @import "toastr";
@@ -12,6 +12,13 @@
 .blank_links a {
   color: black;
   text-decoration: none;
+  box-shadow: none;
+}
+
+.blank_links a:hover {
+  text-decoration: none;
+  color: black;
+  background-color: white;
 }
 
 /* Controls all Toastr notifications. */
@@ -51,4 +58,20 @@
   /* Font-size for the icon is 26px. */
   /* Font Awesome icon: bomb */
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAADGElEQVRIib2WW2wMYRTHfzNdVXupbXfVm1K0CbEkbd1aUkIf3FIJQXmSoOWJ4qEqQjVeVJpKLCXiQYoQEkQoEdGqS9WlVOMaQkjXbjua7ao1nc+D7Oiy3a4t/T99mXMyv3P+3/lmPqmr5QUDIXlAKIAhsBDglASOaF/U0enFo7Rz99EjrPHxjE0eSZLd3mQxmQqDQJLAgcT0aEEfW1vZUbGPtJTRmE1Gjp05TVnRFiwmU3BH/VXqqFFsXrMOj9JOp88HwMt3bxmdnAz8yz2SJOIGx/L2wwdMRiPeTh9KR4cejgjk9fn45HLRpihoQujPNU1D7e4G4MGTJ5TuryQrPR2bNYHnb14zZdIkPTekdUIIWt2fqamt5fy1qzx79QpVVZFlmSS7nZmZk5mXk8PRM6dxud2sy1/J2SuX2bq2gPGpaSAEuzZuwmZN+NWwfo4EtwLDUHe/gW3le3nQ/BSE4Luq/lHMkLg4vvn9aJpGks2Gs7SM+bNm/1Yx9UhkhbSu6kQ1SzYUIgHnnId4f+sOsYMG/QH62tWFpmkAuDweDp2o1m0MpR7nSFDf2MiegwfImODAuWs3fvU7ew9XoYboqKdkWSbJZkOWpL5BbYpC+ZHDJMQPpby4BHd7OwXbi3nc0hIWAjA4NpbVS5Yiy73Plh65fuc2NbU3KchfiS3ByvodJRFB4KeNl27cCJujg05dvIDa3Y1HUXAeP87D5uaIIAHdbLgXNPq/S7euvvE+ADsrK/4KEJDL7Ub58oVEqzVkXO+ow+uNChCQpml88/t7jesge2Jiv0AGgwGL2dw3KDd7Rr9A48aMwWw09g1avnARZqMpKoghJoZFc+aGzdFBmY6J5OXmRgVKn+Agd0Z4R3SQ2WikuHADaSkpfwUZarFQVrSZ4fZhkYEkJFJGjKC8uCRi2HC7ndKNRWRnZCKF+fwEgQKak5XNOWcVq/IW97pnhpgY5uXMorqikrUr8iMqSv9N9LycCARen4+GpsecvHCemrpa3G1txJvNTE/PYNmChcyeOo1EqxWJ3jsREk0SFAaB/rcG7F73A9BkFu88Sx9qAAAAAElFTkSuQmCC") !important;
+}
+
+.inline_code {
+  background-color: #e0dede;
+  color: black;
+  padding: 4px;
+  font-family: "Courier New", Courier, monospace;
+}
+.code {
+  display: inline-block;
+  background-color: #e0dede;
+  color: black;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
 }

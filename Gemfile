@@ -81,3 +81,7 @@ gem 'tinymce-rails'
 gem 'themoviedb'
 gem 'devise', '~> 4.2'
 gem "letter_opener", :group => :development
+gem 'prism-rails'
+gem "chartkick"
+gem 'groupdate'
+gem 'name_of_person', '~> 1.1', '>= 1.1.1'

@@ -1,6 +1,20 @@
 # frozen_string_literal: true
 
 class FilmsController < StandardItemController
+  include Reportable
+  skip_before_action :authenticate_user!, only: [:all]
+  def all
+    @all_films = Film.all.order("title ASC")
+    @total_film_count = Film.count
+    @films_grouped_by_ratings = build_rating_chart(Film)
+    @films_grouped_by_release_year = Film.build_release_year_chart
+    @films_grouped_by_director = Film.build_top_directors_chart
+    @films_grouped_by_consumption_date = Film.build_watched_on_chart
+    @films_grouped_by_dow_watched = Film.build_films_by_dow_chart
+    @films_watched_this_year = consumed_this_year(Film)
+    render layout: "main"
+  end
+
   def create
     @film = Film.new(film_params)
     super

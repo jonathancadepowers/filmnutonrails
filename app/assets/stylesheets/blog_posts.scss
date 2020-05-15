@@ -7,3 +7,78 @@
 .comment_body_paragraph {
   margin-top: -12px;
 }
+
+.blog_post_container {
+  margin-bottom: 35px;
+}
+
+.blog_post_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.blog_post_timestamp {
+  color: #ef6768;
+  margin-bottom: 10px;
+  font-size: 85%;
+}
+
+.blog_post_timestamp a {
+  text-decoration: none;
+  box-shadow: none;
+  color: #ef6768;
+}
+
+.blog_post_timestamp a:hover {
+  text-decoration: underline;
+  color: black;
+  background-color: white;
+  color: #ef6768;
+}
+
+.return_to_homepage {
+  font-size: 85%;
+}
+
+.return_to_homepage a {
+  text-decoration: none;
+  box-shadow: none;
+  color: black;
+}
+
+.return_to_homepage a:hover {
+  text-decoration: underline;
+  color: black;
+  background-color: white;
+  color: black;
+}
+
+h3 {
+  font-size: 1.7rem;
+}
+
+blockquote {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  margin-left: 20px;
+  padding: 10px 5px 10px 10px;
+  background-color: #ede8e8;
+  border: 0px solid #efe14a;
+  line-height: 30px;
+}
+
+.media_links_header {
+  font-size: 19px;
+  font-weight: bolder;
+}
+
+.media_links {
+  display: block;
+  list-style-type: square;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  line-height: 30px;
+}
