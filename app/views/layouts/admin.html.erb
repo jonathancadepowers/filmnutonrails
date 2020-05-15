@@ -17,13 +17,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "pencil" %>&nbsp;&nbsp;Blog Posts
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= blog_posts_path %>">All Posts</a>
-            <a class="dropdown-item" href="<%= new_blog_post_path %>">Submit New Post</a></a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= fa_icon "pencil" %>&nbsp;&nbsp;Blog Posts
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="<%= blog_posts_path %>">All Posts</a>
+              <a class="dropdown-item" href="<%= new_blog_post_path %>">Submit New Post</a></a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -33,85 +33,85 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="<%= films_path %>">View All Films</a>
             <a class="dropdown-item" href="<%= new_film_path %>">Submit New Film</a></a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "tv" %>&nbsp;&nbsp;TV Shows
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= tv_shows_path %>">All TV Shows</a>
-            <a class="dropdown-item" href="<%= new_tv_show_path %>">Submit New Show</a></a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "book" %>&nbsp;&nbsp;Books
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= books_path %>">All Books</a>
-            <a class="dropdown-item" href="<%= new_book_path %>">Submit New Book</a></a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "file" %>&nbsp;&nbsp;Artifacts
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= artifacts_path %>">All Artifacts</a>
-            <a class="dropdown-item" href="<%= new_artifact_path %>">Upload New Artifact</a></a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "flag-checkered" %>&nbsp;&nbsp;More
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">            
-            <a class="dropdown-item" href="<%= users_path %>">Users</a>          
-          </div>
-        </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= fa_icon "user-circle" %>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= log_in_out_link(current_user) %>
-              <%= edit_user_link(current_user) %>
-            </div>
-          </li>
-        </ul>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= fa_icon "tv" %>&nbsp;&nbsp;TV Shows
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<%= tv_shows_path %>">All TV Shows</a>
+          <a class="dropdown-item" href="<%= new_tv_show_path %>">Submit New Show</a></a>
       </div>
-    </nav>
-    <div class="container-fluid">
-      <!–– TODO: The three "unless" calls below are almost identical. Dry them up. ––>
-      <% unless flash[:notice].blank? %>
-        <div id="flash" class="alert alert-success alert-dismissible fade show" role="alert">
-          <%= flash[:notice] %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <% end %>
-      <% unless flash[:error].blank? %>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <%= flash[:error] %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <% end %>
-      <!–– TODO: Style the "alert" below different than the "notice" above. They are currently identical. ––>
-      <% unless flash[:alert].blank? %>
-        <div id="flash" class="alert alert-success alert-dismissible fade show" role="alert">
-          <%= flash[:alert] %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <% end %>
-      <%= yield %>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= fa_icon "book" %>&nbsp;&nbsp;Books
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="<%= books_path %>">All Books</a>
+        <a class="dropdown-item" href="<%= new_book_path %>">Submit New Book</a></a>
     </div>
-  </body>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= fa_icon "file" %>&nbsp;&nbsp;Artifacts
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="<%= artifacts_path %>">All Artifacts</a>
+      <a class="dropdown-item" href="<%= new_artifact_path %>">Upload New Artifact</a></a>
+  </div>
+</li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= fa_icon "flag-checkered" %>&nbsp;&nbsp;More
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="<%= users_path %>">Users</a>
+  </div>
+</li>
+</ul>
+<ul class="navbar-nav ml-auto">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= fa_icon "user-circle" %>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+      <%= log_in_out_link(current_user) %>
+      <%= edit_user_link(current_user) %>
+    </div>
+  </li>
+</ul>
+</div>
+</nav>
+<div class="container-fluid">
+  <!–– TODO: The three "unless" calls below are almost identical. Dry them up. ––>
+  <% unless flash[:notice].blank? %>
+    <div id="flash" class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= flash[:notice] %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+  <% unless flash[:error].blank? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= flash[:error] %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+  <!–– TODO: Style the "alert" below different than the "notice" above. They are currently identical. ––>
+  <% unless flash[:alert].blank? %>
+    <div id="flash" class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= flash[:alert] %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
+</body>
 </html>
