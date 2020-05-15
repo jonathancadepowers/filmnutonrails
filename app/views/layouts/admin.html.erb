@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Filmnut</title>
+    <title>Filmnut Admin</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'layout_admin', media: 'all' %>
+    <%= stylesheet_link_tag params[:controller] %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to "Filmnut Admin", root_path, class: "navbar-brand" %>
+      <%= link_to "Filmnut Admin", films_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -53,10 +55,19 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "flag-checkered" %>&nbsp;&nbsp;More
+            <%= fa_icon "file" %>&nbsp;&nbsp;Artifacts
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= users_path %>">Users</a>            
+            <a class="dropdown-item" href="<%= artifacts_path %>">All Artifacts</a>
+            <a class="dropdown-item" href="<%= new_artifact_path %>">Upload New Artifact</a></a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon "flag-checkered" %>&nbsp;&nbsp;More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">            
+            <a class="dropdown-item" href="<%= users_path %>">Users</a>          
           </div>
         </li>
         </ul>

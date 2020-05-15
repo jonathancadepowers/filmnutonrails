@@ -1,4 +1,5 @@
 menubar: false
+relative_urls: false
 toolbar:
   - styleselect | bold italic | image | link | emoticons | forecolor backcolor | numlist bullist | codesample | spellchecker | "table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | code | searchreplace |  | undo redo
 plugins:

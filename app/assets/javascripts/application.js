@@ -7,6 +7,9 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
+//= require prism
+//= require chartkick
+//= require Chart.bundle
 
 // Possible types: info, success, warning, error
 function default_toastr (type, title, message) {
@@ -32,4 +35,13 @@ function default_toastr (type, title, message) {
 
 function generic_error_toast () {
   default_toastr('error', 'An error occured.', 'Sorry about that. Try again?')
+}
+
+function textToClipboard (text) {
+  var dummy = document.createElement('textarea')
+  document.body.appendChild(dummy)
+  dummy.value = text
+  dummy.select()
+  document.execCommand('copy')
+  document.body.removeChild(dummy)
 }

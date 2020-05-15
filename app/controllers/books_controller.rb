@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class BooksController < StandardItemController
+  include Reportable
+  def all
+    @all_books = Book.all.order("title ASC")
+    @total_book_count = Book.count
+    @books_read_this_year = consumed_this_year(Book)
+    @books_grouped_by_ratings = build_rating_chart(Book)
+    render layout: "main"
+  end
+
   def create
     @book = Book.new(book_params)
     super
@@ -34,6 +43,7 @@ class BooksController < StandardItemController
   def book_params
     params.require(:book).permit(
       :title,
+      :authors,
       :url,
       :rating,
       :consumed_on

@@ -10,8 +10,12 @@ module Filmnut
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    config.eager_load_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join("lib")
     config.eager_load = true
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.enabled = true
+    config.active_storage.service_urls_expire_in = 999.years
+    config.time_zone = "Central Time (US & Canada)"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

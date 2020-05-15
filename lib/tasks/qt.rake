@@ -3,21 +3,24 @@ require "uri"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
   task qt: :environment do	
-	
-		def validBraces(braces)
-			chars = braces.split('')
-			chars.each_with_index { |c, i|
-				position = i - 1
-				if i > 0 && braces[i] != c
-					return false
-					break
-				else
-					return true
-				end
-			}
-		end
 
-		puts validBraces("[(])")
+		puts NameOfPerson::PersonName.full("David Heinemeier Hansson").first
+
+	end
+
+	task list_all_artifacts: :environment do
+
+		all = ActiveRecord::Base.connection.execute("Select * from active_storage_blobs").to_a
+		all.each { |i|
+				puts i["filename"]
+		}
+
+	end
+
+	task get_object_by_attribute: :environment do
+
+		film = Film.where(title: ["Dogtooth"])
+		puts film.inspect
 
 	end
 
