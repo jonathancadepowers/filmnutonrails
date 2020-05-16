@@ -5,6 +5,7 @@
       <%= fa_icon "calendar" %>
       <%= link_to single_blog_post.created_at.strftime("Posted %B %e, %Y"), single_blog_post %>
     </div>
+    <%# TODO: Direclty outputting the raw "body" content below is causing a Brakeman warning. %>
     <%= single_blog_post.body.html_safe %>
     <hr>
   </div>
