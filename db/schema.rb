@@ -16,24 +16,24 @@ ActiveRecord::Schema.define(version: 2020_05_16_134547) do
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.text "name"
-    t.text "record_type"
-    t.bigint "record_id"
-    t.bigint "blob_id"
-    t.datetime "created_at"
-    t.index ["blob_id"], name: "idx_16716_index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "idx_16716_index_active_storage_attachments_uniqueness", unique: true
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.text "key"
-    t.text "filename"
-    t.text "content_type"
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
     t.text "metadata"
-    t.bigint "byte_size"
-    t.text "checksum"
-    t.datetime "created_at"
-    t.index ["key"], name: "idx_16707_index_active_storage_blobs_on_key", unique: true
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "active_storage_postgresql_files", force: :cascade do |t|
@@ -42,80 +42,80 @@ ActiveRecord::Schema.define(version: 2020_05_16_134547) do
     t.index ["key"], name: "index_active_storage_postgresql_files_on_key", unique: true
   end
 
-  create_table "artifacts", id: :bigint, default: -> { "nextval('artifacts_id_sq'::regclass)" }, force: :cascade do |t|
-    t.text "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "artifacts", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "blog_posts", id: :bigint, default: nil, force: :cascade do |t|
-    t.text "title"
+  create_table "blog_posts", force: :cascade do |t|
+    t.string "title"
     t.text "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "books", id: :bigint, default: -> { "nextval('books_id_sq'::regclass)" }, force: :cascade do |t|
-    t.text "title"
+  create_table "books", force: :cascade do |t|
+    t.string "title"
     t.text "url"
-    t.bigint "rating"
+    t.integer "rating"
     t.datetime "consumed_on"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "authors"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "author"
+    t.string "author"
     t.text "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.bigint "blog_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "blog_post_id"
   end
 
-  create_table "films", id: :bigint, default: -> { "nextval('film_id_sq'::regclass)" }, force: :cascade do |t|
-    t.text "title"
-    t.text "url"
-    t.bigint "rating"
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.integer "rating"
     t.datetime "consumed_on"
-    t.text "directors"
-    t.bigint "release_year"
+    t.string "directors"
+    t.integer "release_year"
     t.float "running_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "tv_shows", id: :bigint, default: -> { "nextval('shows_id_sq'::regclass)" }, force: :cascade do |t|
-    t.text "title"
-    t.text "url"
-    t.bigint "rating"
+  create_table "tv_shows", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.integer "rating"
     t.datetime "consumed_on"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :bigint, default: nil, force: :cascade do |t|
-    t.text "email", default: ""
-    t.text "encrypted_password", default: ""
-    t.text "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text "confirmation_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.bigint "failed_attempts", default: 0
-    t.text "unlock_token"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
     t.datetime "locked_at"
-    t.boolean "approved", default: false
+    t.boolean "approved", default: false, null: false
     t.boolean "pending_approval", default: true
-    t.index ["approved"], name: "idx_16694_index_users_on_approved"
-    t.index ["confirmation_token"], name: "idx_16694_index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "idx_16694_index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "idx_16694_index_users_on_reset_password_token", unique: true
-    t.index ["unlock_token"], name: "idx_16694_index_users_on_unlock_token", unique: true
+    t.index ["approved"], name: "index_users_on_approved"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id", name: "active_storage_attachments_blob_id_fkey"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end
