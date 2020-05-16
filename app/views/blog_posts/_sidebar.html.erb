@@ -5,35 +5,43 @@
     <a href="https://www.instagram.com/jonathanpowers/" target=_blank"><%= fa_icon "instagram" %></a>
     <a href="https://github.com/jonathancadepowers" target=_blank"><%= fa_icon "github-square" %></a>
     <a href="https://www.linkedin.com/in/jpow" target=_blank"><%= fa_icon "linkedin-square" %></a>
-    <p>
-      <p>
-        <span class="media_links_header">Last Ten Movies I've Seen:</span>
-        <ul class="media_links">
-          <% @last_10_films_consumed.each do |film| %>
-            <li>
-              <%= link_to film.title, film.url, target: "_blank"%>
-            </li>
-          <% end %>
-        </ul>
-      </p>
-      <p>
-        <span class="media_links_header">Last Ten TV Shows I've Watched:</span>
-        <ul class="media_links">
-          <% @last_10_shows_consumed.each do |show| %>
-            <li>
-              <%= link_to show.title, show.url, target: "_blank" %>
-            </li>
-          <% end %>
-        </ul>
-      </p>
-      <p>
-        <span class="media_links_header">Last Ten Books I've Read:</span>
-        <ul class="media_links">
-          <% @last_10_books_consumed.each do |book| %>
-            <li>
-              <%= link_to book.title, book.url, target: "_blank" %>
-            </li>
-          <% end %>
-        </ul>
-      </p>
-    <% end %>
+  </p>
+  <p>
+    <span class="sidebar_header">My Latest Pics</span>
+    <div class="sidebar_embed"><!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/71c533f2accd59a78d288918d20adb6e.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe></div>
+  </p>
+  <p>
+    <span class="sidebar_header">What I'm Listening to Lately</span>
+    <div class="sidebar_embed"><iframe src="https://open.spotify.com/embed/playlist/1ioFfdpRXFLeC32bdduF1h" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+  </p>  
+  <p>
+    <span class="sidebar_header">Last Ten Movies I've Seen</span>
+    <ul class="media_links">
+      <% @last_10_films_consumed.each do |film| %>
+        <li>
+          <%= link_to film.title, film.url, target: "_blank"%>
+        </li>
+      <% end %>
+    </ul>
+  </p>
+  <p>
+    <span class="sidebar_header">Last Ten TV Shows I've Watched</span>
+    <ul class="media_links">
+      <% @last_10_shows_consumed.each do |show| %>
+        <li>
+          <%= link_to show.title, show.url, target: "_blank" %>
+        </li>
+      <% end %>
+    </ul>
+  </p>
+  <p>
+    <span class="sidebar_header">Last Ten Books I've Read</span>
+    <ul class="media_links">
+      <% @last_10_books_consumed.each do |book| %>
+        <li>
+          <%= link_to book.title, book.url, target: "_blank" %>
+        </li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>

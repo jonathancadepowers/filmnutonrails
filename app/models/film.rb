@@ -30,7 +30,6 @@ class Film < ApplicationRecord
 
   def self.build_watched_on_chart
     data = Film.group_by_year(:consumed_on)
-               .order("consumed_on asc")
                .count
                .transform_keys do |key|
       key.year.to_s

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BooksController < StandardItemController
+  skip_before_action :authenticate_user!, only: [:all]
   include Reportable
   def all
     @all_books = Book.all.order("title ASC")

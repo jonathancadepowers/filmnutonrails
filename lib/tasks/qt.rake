@@ -43,7 +43,7 @@ namespace :qt do
 	
 	task create_comment: :environment do
 
-		blog_post = BlogPost.find(4)
+		blog_post = BlogPost.find(57)
 		puts blog_post.comments.create(
 			author: "SRobinson",
 			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet euismod justo, nec bibendum nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vestibulum ac augue non congue. Sed in odio ac orci commodo imperdiet a vel dui. Morbi in mi ac felis congue ullamcorper. In quis porta nulla, ut ultricies magna. Vivamus suscipit risus est, aliquet mollis turpis pharetra a."

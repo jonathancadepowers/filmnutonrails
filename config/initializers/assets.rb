@@ -23,6 +23,7 @@ Rails.application.config.assets.precompile += %w( tv_shows.css )
 Rails.application.config.assets.precompile += %w( users.css )
 Rails.application.config.assets.precompile += %w( pages.css )
 Rails.application.config.assets.precompile += %w( devise/sessions.css )
+Rails.application.config.assets.precompile += %w( devise/registrations.css )
 Rails.application.config.assets.precompile += %w( artifacts.css )
 
 # Precompile additional assets.
