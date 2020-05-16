@@ -1,0 +1,21 @@
+<% content_for :lead_head do %>
+  <div class="mediateaser">Here's a list of every book I've ever read and my rating for each. I'm now up to a total of <%= number_with_delimiter(@total_book_count, :delimiter => ',') %> books, including <%= number_with_delimiter(@books_read_this_year, :delimiter => ',') %> from this year.</div>
+<% end %>
+<% content_for :table_open do %>
+  <table class="table table-striped">
+    <thead>
+      <tr >
+        <th scope="col" style="width: 40%">Book</th>
+        <th scope="col">Author(s)</th>
+        <th scope="col">Read On</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% end %>
+    <%= render partial: "single_book", collection: @all_books %>
+    <% content_for :table_close do %>
+    </tbody>
+  </table>
+<% end %>
+<%= render "sidebar" %>

@@ -1,0 +1,42 @@
+<% content_for :sidebar do %>
+  <p style="text-align:left;">
+    <%= pie_chart @films_grouped_by_ratings,donut: true,
+                                            width: "225px",                                             
+                                            colors: ["#F8C0C0ff", "#612A2Aff", "#F06768", "#FCE3E3ff", "#A54748ff"], 
+                                            legend: true, 
+                                            title: "Films by Star Rating", 
+                                            library: {legend: {position: 'bottom'}, 
+                                                      title: {fontFamily: 'Verdana', fontSize: 20} } %>
+  </p>
+  <p>
+    <%= bar_chart @films_grouped_by_release_year,width: "225px",
+                                                 height: "750px",
+                                                 colors: ["#F06768"],
+                                                 legend: false,
+                                                 title: "Films by Release Year",
+                                                 library: {title: {fontFamily: 'Verdana', fontSize: 20} } %>
+  </p>
+  <p>
+    <%= bar_chart @films_grouped_by_director, width: "225px",
+                                            height: "750px", 
+                                            colors: ["#F06768"], 
+                                            legend: false, 
+                                            title: "Top Directors Watched",
+                                            library: {title: {fontFamily: 'Verdana', fontSize: 20} } %>
+    <p>
+      <%= bar_chart @films_grouped_by_consumption_date, width: "225px",
+                                            colors: ["#F06768"], 
+                                            legend: false, 
+                                            title: "Films Watched Per Year",
+                                            library: {title: {fontFamily: 'Verdana', fontSize: 20} } %>
+      <p>
+        <p style="text-align:left;">
+          <%= column_chart @films_grouped_by_dow_watched,donut: true,
+                                            width: "225px",                                             
+                                            colors: ["#F06768"], 
+                                            legend: false, 
+                                            title: "Day of Week Watch Count", 
+                                            library: {legend: {position: 'bottom'}, 
+                                                      title: {fontFamily: 'Verdana', fontSize: 20} } %>
+        </p>
+      <% end %>

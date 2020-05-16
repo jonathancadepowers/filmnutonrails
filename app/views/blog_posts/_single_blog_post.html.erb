@@ -1,0 +1,11 @@
+<% content_for :lead_body do %>
+  <div class="blog_post_container">
+    <h2 class="blog_post_title"><%= single_blog_post.title %></h2>
+    <div class="blog_post_timestamp">
+      <%= fa_icon "calendar" %>
+      <%= link_to single_blog_post.created_at.strftime("Posted %B %e, %Y"), single_blog_post %>
+    </div>
+    <%= single_blog_post.body.html_safe %>
+    <hr>
+  </div>
+<% end %>

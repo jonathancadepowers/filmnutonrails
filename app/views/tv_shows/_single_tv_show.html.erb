@@ -1,0 +1,15 @@
+<% content_for :lead_body do %>
+  <tr>
+    <th scope="row">
+      <%= link_to single_tv_show.title, sanitize_link(single_tv_show.url), target: "_blank" %><br>
+    </th>
+    <td>
+      <%= single_tv_show.consumed_on.strftime("%b %-d, %Y") %>
+    </td>
+    <td>
+      <% single_tv_show.rating.times do %>
+        <span style="color:#F06768"><%= fa_icon "star" %></span>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

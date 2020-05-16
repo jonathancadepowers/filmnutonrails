@@ -1,10 +1,14 @@
 require "uri"
+require "rails-html-sanitizer.rb"
 
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
-  task qt: :environment do	
+	task qt: :environment do	
+		
+		val = '<a href="www.google.com">Foo</a>Bar'
 
-		puts NameOfPerson::PersonName.full("David Heinemeier Hansson").first
+		safe_list_sanitizer = Rails::Html::WhiteListSanitizer.new
+		puts safe_list_sanitizer.sanitize(val)
 
 	end
 

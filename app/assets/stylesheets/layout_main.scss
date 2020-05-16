@@ -1,0 +1,79 @@
+body {
+  font-family: "Open Sans", Verdana, Geneva, Arial, sans-serif;
+  font-size: 17.5px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  box-shadow: inset 0 -4px 0 #c0e6f7;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+  background-color: #c0e6f7;
+}
+
+/* Font used for the Filmnut logo. */
+@font-face {
+  font-family: LeagueMonoThin;
+  src: url("LeagueMonoThin.otf");
+}
+
+#toprail {
+  background: #383d44 url(rail.jpg) repeat-x bottom left;
+  width: 100%;
+  height: 18px;
+  min-width: 1200px;
+}
+
+.sidebar {
+  font-family: "Open Sans", Verdana, Geneva, Arial, sans-serif;
+  font-size: 17.5px;
+}
+
+.sidebar-body {
+  margin-top: 15px;
+}
+
+.logo {
+  font-family: LeagueMonoThin;
+  font-size: 35px;
+  color: black;
+  background-color: #f06768;
+  padding: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: table-cell;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.logo a {
+  text-decoration: none;
+  color: black;
+  box-shadow: none;
+}
+
+.logo a:hover {
+  text-decoration: underline;
+  color: black;
+  background-color: #f06768 !important;
+}
+
+.social_icons {
+  font-size: 50px;
+  margin-top: -15px;
+}
+
+.mediateaser {
+  background-color: #fcf4a4;
+  border-radius: 6px;
+  margin-top: -10px;
+  margin-bottom: 25px;
+  padding: 8px 10px 8px 10px;
+  font-weight: bold;
+}

@@ -9,4 +9,9 @@ module ApplicationHelper
       "#"
     end
   end
+
+  def sanitize_link(link)
+    full_sanitizer = Rails::Html::FullSanitizer.new
+		full_sanitizer.sanitize(link)
+  end
 end

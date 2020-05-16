@@ -1,0 +1,13 @@
+<p ajax-clipboard-copy="true">
+  <%= link_to "Link to Uploaded File", polymorphic_url(@artifact.artifact_file), target: "_blank" %>
+  <%= link_to artifacts_clipboard_copy_path("artifact_path" => polymorphic_url(@artifact.artifact_file)), remote: true, method: :get do %>
+    <%= fa_icon "copy" %>
+  <% end %>
+</p>
+<p>
+  <%= link_to 'Delete Artifact',
+              @artifact,
+              method: :delete,
+              data: { confirm: 'Sounds dicey! You sure?' }
+  %>
+</p>

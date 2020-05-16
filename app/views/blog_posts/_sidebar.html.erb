@@ -1,0 +1,39 @@
+<% content_for :sidebar do %>
+  <p><b>Hi. I'm Jonathan.</b> I write about pop culture and technology. I track every <%= link_to "film", films_all_path %>, <%= link_to "TV show", tv_shows_all_path %>, and <%= link_to "books", books_all_path %> that I consume.</p>
+  <p class="social_icons blank_links">
+    <a href="https://twitter.com/filmnut" target=_blank"><%= fa_icon "twitter-square" %></a>
+    <a href="https://www.instagram.com/jonathanpowers/" target=_blank"><%= fa_icon "instagram" %></a>
+    <a href="https://github.com/jonathancadepowers" target=_blank"><%= fa_icon "github-square" %></a>
+    <a href="https://www.linkedin.com/in/jpow" target=_blank"><%= fa_icon "linkedin-square" %></a>
+    <p>
+      <p>
+        <span class="media_links_header">Last Ten Movies I've Seen:</span>
+        <ul class="media_links">
+          <% @last_10_films_consumed.each do |film| %>
+            <li>
+              <%= link_to film.title, film.url, target: "_blank"%>
+            </li>
+          <% end %>
+        </ul>
+      </p>
+      <p>
+        <span class="media_links_header">Last Ten TV Shows I've Watched:</span>
+        <ul class="media_links">
+          <% @last_10_shows_consumed.each do |show| %>
+            <li>
+              <%= link_to show.title, show.url, target: "_blank" %>
+            </li>
+          <% end %>
+        </ul>
+      </p>
+      <p>
+        <span class="media_links_header">Last Ten Books I've Read:</span>
+        <ul class="media_links">
+          <% @last_10_books_consumed.each do |book| %>
+            <li>
+              <%= link_to book.title, book.url, target: "_blank" %>
+            </li>
+          <% end %>
+        </ul>
+      </p>
+    <% end %>

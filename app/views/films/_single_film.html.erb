@@ -1,0 +1,21 @@
+<% content_for :lead_body do %>
+  <tr>
+    <th scope="row">
+      <%= link_to single_film.title, sanitize_link(single_film.url), target: "_blank" %><br>
+    </th>
+    <td>
+      <%= single_film.directors %>
+    </td>
+    <td>
+      <%= single_film.release_year %>
+    </td>
+    <td>
+      <%= single_film.consumed_on.strftime("%b %-d, %Y") %>
+    </td>
+    <td>
+      <% single_film.rating.times do %>
+        <span style="color:#F06768"><%= fa_icon "star" %></span>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

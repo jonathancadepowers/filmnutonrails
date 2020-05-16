@@ -85,3 +85,4 @@ gem 'prism-rails'
 gem "chartkick"
 gem 'groupdate'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
+gem 'rails-html-sanitizer'

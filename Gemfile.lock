@@ -323,6 +323,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
+  rails-html-sanitizer
   rubocop (~> 0.73.0)
   rubocop-rails
   sass-rails (~> 5.0)

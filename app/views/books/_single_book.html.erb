@@ -1,0 +1,18 @@
+<% content_for :lead_body do %>
+  <tr>
+    <th scope="row">
+      <%= link_to single_book.title, sanitize_link(single_book.url), target: "_blank" %><br>
+    </th>
+    <td>
+      <%= single_book.authors %>
+    </td>
+    <td>
+      <%= single_book.consumed_on.strftime("%b %-d, %Y") %>
+    </td>
+    <td>
+      <% single_book.rating.times do %>
+        <span style="color:#F06768"><%= fa_icon "star" %></span>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
