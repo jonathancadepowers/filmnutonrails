@@ -2,6 +2,7 @@
 
 class TvShowsController < StandardItemController
   include Reportable
+  skip_before_action :authenticate_user!, only: [:all]
   def all
     @all_tv_shows = TvShow.all.order("title ASC")
     @total_show_count = TvShow.count

@@ -10,6 +10,8 @@ class ArtifactsController < StandardItemController
 
   def create
     @artifact = Artifact.new(artifact_params)
+    @artifact.artifact_file.attach(params[:artifact][:artifact_file])
+    @artifact.save!
     super
   end
 

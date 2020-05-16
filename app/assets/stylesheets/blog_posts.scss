@@ -67,9 +67,9 @@ blockquote {
   line-height: 30px;
 }
 
-.media_links_header {
+.sidebar_header {
   font-size: 19px;
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 .media_links {
@@ -81,4 +81,8 @@ blockquote {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
   line-height: 30px;
+}
+
+.playlist {
+  margin-top: 15px
 }
