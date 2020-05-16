@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'artifacts/update'
   get 'artifacts/clipboard_copy' => "artifacts#clipboard_copy"
   root "blog_posts#all"
-  # devise_for :users
+  devise_for :users
   get "/pages/:page" => "pages#show"
   post "/films/tmdb_search" => "films#tmdb_search"
   get "/films/tmdb_get_film_attributes" => "films#tmdb_get_film_attributes"
