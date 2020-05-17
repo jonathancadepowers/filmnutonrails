@@ -18,7 +18,8 @@ a:hover {
 /* Font used for the Filmnut logo. */
 @font-face {
   font-family: LeagueMonoThin;
-  src: url("LeagueMonoThin.otf");
+  src: font-url("/assets/LeagueMonoThin.otf"); 
+  /* src: url("LeagueMonoThin.otf"); */
 }
 
 #toprail {
