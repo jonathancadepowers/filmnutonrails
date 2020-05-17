@@ -13,7 +13,6 @@ module Filmnut
     config.eager_load_paths << Rails.root.join("lib")
     config.eager_load = true
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf|otf)$/
     config.assets.enabled = true
     config.active_storage.service_urls_expire_in = 999.years
     config.time_zone = "Central Time (US & Canada)"

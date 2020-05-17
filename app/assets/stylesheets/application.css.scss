@@ -1,0 +1,85 @@
+/*
+ *= require rails_bootstrap_forms
+ *= require font-awesome
+ *= require toastr
+ *= require_self
+ *= require prism
+ */
+@import "bootstrap";
+@import "toastr";
+
+/* Displays links in plain black with no styling. Good for linked images. */
+.blank_links a {
+  color: black;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.blank_links a:hover {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+}
+
+/* Controls all Toastr notifications. */
+.fade {
+  transition-duration: 1s;
+}
+
+/* Controls all Toastr notifications. */
+.toast-message label {
+  color: #155724;
+}
+
+/* Controls all Toastr notifications. */
+#toast-container > div {
+  color: black;
+}
+
+/* Controls success Toastr notifications. */
+.toast-success {
+  background-color: #d4edda;
+}
+
+/* Controls error Toastr notifications. */
+.toast-error {
+  background-color: #f8d7da;
+}
+
+/* Controls success Toastr notifications. */
+#toast-container > .toast-success {
+  /* Font-size for the icon is 26px. */
+  /* Font Awesome icon: check-square */
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAADTklEQVRIid2Wa2gUVxSAv7s7s7uZmG0KTYW2eVBLo9b4qOkirRDsH/8EAtqo2KQR6yPaNQ1K1RWDzyapNvERfCKCUMLWPmxa0IhxE6VFClaUamMiSKNBkzWzlJZWm5nJ7Q+TaeK6cXcp/uj5Mdw598z5uOdx54ireidPQxxPhQIoQwsJCyzDLGg9HeJw3X6u/9yOlDIhZ0IIxudNYNmalcya/TaKqpwDgiNAlmEUfHe8qbyheg8RPZIwBEBKyY32G9Ss38afv/9BYXERiqoEYVjoQidbaKjeTbinF9MwEoYMiWkYhO/2srd6N63NZ229DTpUd4CIHkka8KhE+nQOfrovGtT5SwemYSbl1OFwMMabNkJnGiad1zqiQcnkBMDpdDK3dB6b6rcyaVreiL3hPpVHP0xEtFSNkuVlLPK/T1paGnnTJlNZ5uf61fYo26T7SFEUFi4tZfGqJXif8SIcgpdyMimYPeux9jFB2phUfDNnkDE2I2ovRdMoXbGIxauW2rmxTJOfLlzk28+/iR+kpWpUbKhkf/AwO4/s4tWJuSAGT6IqLFtdzoqPPsCb7gVgwBrg/JlzVFUEuNt9J35Q4bwiisvm407xMNX3OutrNpKZnYmqqixcUkJJeRkpmgaARHLl4mVqN2zn1s2uWAF6fDHo4T7u//UAt8eDoij4ZvpoaDzI5R8vUVhchCfFgwQMw6D1VIjawDbCPeGYkJgnamsOcahuH5G+CA8rVDAu9xXmvjffhgB833Ke+s07ngiJCbIsi+DRRuo2fcJvkYe3hZCDaZISs9+g9WQL29duobvr9hMhMEofGf0GTcETuNxuVq7z89zzGQhAAqebTrH343p67/TEBRkVNCRNwa8ZsCwqNq4m/dl0LrT9wM6qGvR7etyQuED9f/fz1WdfoPfpTMibyPFjwYQhI0BOxYllWjEN25pDtDWHEnKuqqq9tosh/00fLrcrIUejicvtIv+tN6JB/sCHZOZk/WegrJez8Qcq7Xc7dFPypxKoraJ+8w5u3ezCSPIvq6oq2eNyWLNlHZOnT7H1Yti4tQAo6P71Nicav6TjWgcDlkSIf53IoYewr77B5pUIBMIhyH1tPHPefYcXsl5ECGEPJ+J/N9f9A2xaKVMUksmkAAAAAElFTkSuQmCC") !important;
+}
+
+/* Controls error Toastr notifications. */
+#toast-container > .toast-error {
+  /* Font-size for the icon is 26px. */
+  /* Font Awesome icon: bomb */
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAADGElEQVRIib2WW2wMYRTHfzNdVXupbXfVm1K0CbEkbd1aUkIf3FIJQXmSoOWJ4qEqQjVeVJpKLCXiQYoQEkQoEdGqS9WlVOMaQkjXbjua7ao1nc+D7Oiy3a4t/T99mXMyv3P+3/lmPqmr5QUDIXlAKIAhsBDglASOaF/U0enFo7Rz99EjrPHxjE0eSZLd3mQxmQqDQJLAgcT0aEEfW1vZUbGPtJTRmE1Gjp05TVnRFiwmU3BH/VXqqFFsXrMOj9JOp88HwMt3bxmdnAz8yz2SJOIGx/L2wwdMRiPeTh9KR4cejgjk9fn45HLRpihoQujPNU1D7e4G4MGTJ5TuryQrPR2bNYHnb14zZdIkPTekdUIIWt2fqamt5fy1qzx79QpVVZFlmSS7nZmZk5mXk8PRM6dxud2sy1/J2SuX2bq2gPGpaSAEuzZuwmZN+NWwfo4EtwLDUHe/gW3le3nQ/BSE4Luq/lHMkLg4vvn9aJpGks2Gs7SM+bNm/1Yx9UhkhbSu6kQ1SzYUIgHnnId4f+sOsYMG/QH62tWFpmkAuDweDp2o1m0MpR7nSFDf2MiegwfImODAuWs3fvU7ew9XoYboqKdkWSbJZkOWpL5BbYpC+ZHDJMQPpby4BHd7OwXbi3nc0hIWAjA4NpbVS5Yiy73Plh65fuc2NbU3KchfiS3ByvodJRFB4KeNl27cCJujg05dvIDa3Y1HUXAeP87D5uaIIAHdbLgXNPq/S7euvvE+ADsrK/4KEJDL7Ub58oVEqzVkXO+ow+uNChCQpml88/t7jesge2Jiv0AGgwGL2dw3KDd7Rr9A48aMwWw09g1avnARZqMpKoghJoZFc+aGzdFBmY6J5OXmRgVKn+Agd0Z4R3SQ2WikuHADaSkpfwUZarFQVrSZ4fZhkYEkJFJGjKC8uCRi2HC7ndKNRWRnZCKF+fwEgQKak5XNOWcVq/IW97pnhpgY5uXMorqikrUr8iMqSv9N9LycCARen4+GpsecvHCemrpa3G1txJvNTE/PYNmChcyeOo1EqxWJ3jsREk0SFAaB/rcG7F73A9BkFu88Sx9qAAAAAElFTkSuQmCC") !important;
+}
+
+.inline_code {
+  background-color: #e0dede;
+  color: black;
+  padding: 4px;
+  font-family: "Courier New", Courier, monospace;
+}
+.code {
+  display: inline-block;
+  background-color: #e0dede;
+  color: black;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Font used for the Filmnut logo. */
+@font-face {
+  font-family: LeagueMonoThin;
+  src: font-url("/assets/LeagueMonoThin.otf");
+  
+  /* src: url("LeagueMonoThin.otf"); */
+}
