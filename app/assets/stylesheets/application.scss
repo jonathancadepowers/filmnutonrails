@@ -75,3 +75,10 @@
   margin-bottom: 10px;
   font-family: "Courier New", Courier, monospace;
 }
+
+/* Font used for the Filmnut logo. */
+@font-face {
+  font-family: LeagueMonoThin;
+  src: font-url("/assets/LeagueMonoThin.otf"); 
+  /* src: url("LeagueMonoThin.otf"); */
+}
