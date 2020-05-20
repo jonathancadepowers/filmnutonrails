@@ -3,12 +3,10 @@
 class BlogPostsController < StandardItemController
   include Reportable
   skip_before_action :authenticate_user!, only: %i[all show]
+  before_action :hydrate_sidebar_data, only: [:all, :show]
 
   def all
-    @all_blog_posts = BlogPost.all.order("created_at DESC").limit(100)
-    @last_10_films_consumed = last_n_consumed(Film, 10)
-    @last_10_shows_consumed = last_n_consumed(TvShow, 10)
-    @last_10_books_consumed = last_n_consumed(Book, 10)
+    @all_blog_posts = BlogPost.all.order("created_at DESC").limit(100)    
     render layout: "main"
   end
 
@@ -59,4 +57,10 @@ def blog_post_params
     :body,
     :created_at
   )
+end
+
+def hydrate_sidebar_data
+  @last_10_films_consumed = last_n_consumed(Film, 10)
+  @last_10_shows_consumed = last_n_consumed(TvShow, 10)
+  @last_10_books_consumed = last_n_consumed(Book, 10)
 end
