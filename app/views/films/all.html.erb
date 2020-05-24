@@ -1,5 +1,5 @@
-<% content_for :lead_head do %>
-  <div class="mediateaser">Here's a list of every movie I've ever seen and my rating for each. I'm now up to a total of <%= number_with_delimiter(@total_film_count, :delimiter => ',') %> films, including <%= number_with_delimiter(@films_watched_this_year, :delimiter => ',') %> from this year.</div>
+<% content_for :head do %>
+  <div class="media_teaser">Here's a list of every movie I've ever seen and my rating for each. I'm now up to a total of <%= number_with_delimiter(@total_film_count, :delimiter => ',') %> films, including <%= number_with_delimiter(@films_watched_this_year, :delimiter => ',') %> from this year.</div>
 <% end %>
 <% content_for :table_open do %>
   <table class="table table-striped">

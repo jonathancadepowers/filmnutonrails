@@ -5,19 +5,8 @@ namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do	
 		
-		val = '<a href="www.google.com">Foo</a>Bar'
-
-		safe_list_sanitizer = Rails::Html::WhiteListSanitizer.new
-		puts safe_list_sanitizer.sanitize(val)
-
-	end
-
-	task list_all_artifacts: :environment do
-
-		all = ActiveRecord::Base.connection.execute("Select * from active_storage_blobs").to_a
-		all.each { |i|
-				puts i["filename"]
-		}
+		foo = BlogPost.where(recommended: true)
+		puts foo.count
 
 	end
 

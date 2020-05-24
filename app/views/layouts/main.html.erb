@@ -17,24 +17,23 @@
     <div id="toprail"></div>
     <div class="container-fluid" style="margin-top:50px;margin-left:35px;">
       <div class="row">
-        <div class="col-7">
-          <%= yield(:lead_head) %>
+        <div class="col-7 main">
+          <%= yield(:head) %>
           <%= yield(:table_open) %>
-          <%= yield(:lead_body) %>
+          <%= yield(:body) %>
           <%= yield(:table_close) %>
-          <%= yield(:lead_tail) %>
+          <%= yield(:trailer) %>
         </div>
         <div style="width:70px;"></div>
         <div class="col-4 sidebar">
           <div class="logo">
             <%= link_to "FILMNUT", root_path %>
           </div>
-          <div class="sidebar-body">            
+          <div class="sidebar-body">
             <%= yield(:sidebar) %>
           </div>
         </div>
       </div>
-      
     </div>
   </body>
 </html>

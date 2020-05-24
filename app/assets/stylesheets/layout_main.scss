@@ -22,10 +22,14 @@ a:hover {
   min-width: 1200px;
 }
 
+.main {
+  margin-top: 30px;
+}
+
 .sidebar {
   padding-top: 20px;
   height: 100%;
-  border-left: 1px solid #EEEEEE;
+  border-left: 1px solid #eeeeee;
   padding-left: 30px;
 }
 
@@ -48,7 +52,7 @@ a:hover {
   font-weight: bold;
 }
 
-.logo a {  
+.logo a {
   text-decoration: none;
   color: black;
   box-shadow: none;
@@ -65,7 +69,7 @@ a:hover {
   margin-top: -15px;
 }
 
-.mediateaser {
+.media_teaser {
   background-color: #fcf4a4;
   border-radius: 6px;
   margin-top: -10px;

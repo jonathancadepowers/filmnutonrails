@@ -1,5 +1,8 @@
 <% content_for :sidebar do %>
-  <p><b>Hi. I'm Jonathan.</b> I write about pop culture and technology. I track every <%= link_to "film", films_all_path %>, <%= link_to "TV show", tv_shows_all_path %>, and <%= link_to "book", books_all_path %> that I consume.</p>
+  <p><b>Hi. I'm Jonathan.</b><br>
+    I write about pop culture and technology.<br>
+    I track every <%= link_to "film", films_all_path %>, <%= link_to "TV show", tv_shows_all_path %>, and <%= link_to "book", books_all_path %> I consume.<br>
+    Wanna check out the <%= link_to "archives", blog_posts_archives_path %>?</p>
   <p class="social_icons blank_links">
     <a href="https://twitter.com/filmnut" target=_blank"><%= fa_icon "twitter-square" %></a>
     <a href="https://www.instagram.com/jonathanpowers/" target=_blank"><%= fa_icon "instagram" %></a>
@@ -7,14 +10,14 @@
     <a href="https://www.linkedin.com/in/jpow" target=_blank"><%= fa_icon "linkedin-square" %></a>
   </p>
   <p class="embed">
-    <span class="sidebar_header">My Latest Pics</span>    
+    <span class="sidebar_header">My Latest Pics</span>
     <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/c0c1c21b4d9c5450a0d07423e16fa841.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;margin-top:9px;"></iframe>
   </p>
   <p class="embed">
-    <span class="sidebar_header">What I'm Listening To</span>    
+    <span class="sidebar_header">What I'm Listening To</span>
     <iframe src="https://open.spotify.com/embed/playlist/0SOGFFL4JiMXfvo11jTRIg" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="margin-top:9px;"></iframe>
   </p>
-  <p>    
+  <p>
     <span class="sidebar_header">Last Ten Movies I've Seen</span>
     <ul class="media_links">
       <% @last_10_films_consumed.each do |film| %>
@@ -25,7 +28,7 @@
     </ul>
   </p>
   <p>
-    <span class="sidebar_header">Last Ten TV Shows I've Watched</span>        
+    <span class="sidebar_header">Last Ten TV Shows I've Watched</span>
     <ul class="media_links">
       <% @last_10_shows_consumed.each do |show| %>
         <li>

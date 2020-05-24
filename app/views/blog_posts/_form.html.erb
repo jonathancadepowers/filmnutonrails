@@ -12,6 +12,12 @@
       :rows => 25
 	  %>
   </p>
+  <p>
+    <%= f.text_field(:tag_list, label: "Tags") %>
+  </p>
+  <p>
+    <%= f.check_box(:recommended, { checked: calculate_checked_state(@blog_post, @blog_post.recommended, false) }, label: "Recommended?") %>
+  </p>
   <%= link_to "Upload Images", new_artifact_path, target: :_blank %>
   <p>
     <%= build_created_at_field(f, action_name) %>
@@ -29,6 +35,6 @@
                 data: { confirm: 'Sounds dicey! You sure?' }
       %>
     <% end %>
-  </p>  
+  </p>
 <% end %>
 <%= tinymce %>

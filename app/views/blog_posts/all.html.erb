@@ -1,2 +1,8 @@
 <%= render partial: "single_blog_post", collection: @all_blog_posts %>
 <%= render "sidebar" %>
+<% content_for :trailer do %>
+  <div class="archive_teaser">
+    <%= fa_icon "arrow-circle-right" %>
+    <%= link_to "Follow me to the archives...", blog_posts_archives_path %>
+  </div>
+<% end %>
