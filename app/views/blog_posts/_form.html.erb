@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@blog_post, label_errors: false) do |f| %>
+<%= bootstrap_form_for(@blog_post, label_errors: true) do |f| %>
   <p>
     <%= f.text_field :title,
 			:required => true,
