@@ -4,11 +4,6 @@ require "rails-html-sanitizer.rb"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do	
-		
-		foo = "1, 2, 3"
-		puts foo.split(",").each do {
-			
-		}
 
 	end
 
