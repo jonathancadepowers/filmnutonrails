@@ -1,0 +1,9 @@
+<% content_for :head do %>
+  <div class="tag_head">
+    You're viewing all posts about <span class="tag_pop"><%= @requested_tag %></span>. Check out the <%= link_to "archives", blog_posts_archives_path %> for more.
+  </div>
+<% end %>
+<% content_for :body do %>
+  <%= render partial: "single_blog_post", collection: @tagged_posts%>
+<% end %>
+<%= render "sidebar" %>

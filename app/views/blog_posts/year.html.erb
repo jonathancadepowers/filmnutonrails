@@ -1,0 +1,9 @@
+<% content_for :head do %>
+  <div class="year_head">
+    You're viewing all posts from <span class="year_pop"><%= @requsted_year %></span>. Check out the <%= link_to "archives", blog_posts_archives_path %> for more.
+  </div>
+<% end %>
+<% content_for :body do %>
+  <%= render partial: "single_blog_post", collection: @posts_in_year %>
+<% end %>
+<%= render "sidebar" %>
