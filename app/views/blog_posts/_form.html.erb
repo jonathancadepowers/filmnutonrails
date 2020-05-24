@@ -13,7 +13,7 @@
 	  %>
   </p>
   <p>
-    <%= f.text_field(:tag_list, label: "Tags") %>
+    <%= f.text_field(:tag_list, label: "Tags", value: @blog_post.tag_list.join(", ")) %>
   </p>
   <p>
     <%= build_created_at_field(f, action_name) %>
