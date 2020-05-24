@@ -11,7 +11,7 @@ class BlogPost < ApplicationRecord
 
   def self.posts_by_year
     BlogPost.group_by_year(:created_at)
-            .count.select { |_year, count| count.psotive? }
+            .count.select { |_year, count| count.positive? }
             .transform_keys { |key| key.strftime("%Y") }
   end
 end
