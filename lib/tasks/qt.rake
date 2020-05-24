@@ -5,8 +5,10 @@ namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do	
 		
-		foo = BlogPost.where(recommended: true)
-		puts foo.count
+		foo = "1, 2, 3"
+		puts foo.split(",").each do {
+			
+		}
 
 	end
 

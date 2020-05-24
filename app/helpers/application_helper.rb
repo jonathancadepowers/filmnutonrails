@@ -18,4 +18,8 @@ module ApplicationHelper
   def calculate_checked_state(object, current_value, desired_default)
     object.new_record? ? desired_default : current_value
   end
+
+  def append_slash(counter_value, total_size, add_value)
+    " / " unless counter_value + add_value == total_size
+  end
 end

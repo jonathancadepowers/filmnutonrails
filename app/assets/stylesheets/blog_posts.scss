@@ -38,6 +38,10 @@
 
 .return_to_homepage {
   font-size: 85%;
+  margin-top: -15px;
+  position: relative;
+  top: -30;
+  font-size: 16px;
 }
 
 .return_to_homepage a {
@@ -141,4 +145,8 @@ blockquote {
 
 .archive_teaser {
   padding-bottom: 50px;
+}
+
+.tag_list_label {
+  color: #f06768;
 }
