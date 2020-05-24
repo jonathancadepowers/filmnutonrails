@@ -1,0 +1,19 @@
+<% content_for :body do %>
+  <h2>Blog Post Archives</h2>
+  <p>filmnut.org has been published in fits and starts since 2001. If you're feeling frisky, why not dig into the archives?</p>
+  <div class="recommended_posts">
+    <h4>Recommended Posts</h4>
+    <ul>
+      <%= render partial: "single_recommended_post", collection: @recommended_posts %>
+    </ul>
+  </div>
+  <div class="tag_cloud">
+    <h4>All Tags</h4>
+    <%= render partial: "single_tag_in_cloud", collection: @tag_cloud %>
+  </div>
+  <div class="yearly_archives">
+    <h4>Yearly Archives</h4>
+    <%= render partial: "single_post_year", collection: @posts_by_year %>
+  </div>
+<% end %>
+<%= render "sidebar" %>

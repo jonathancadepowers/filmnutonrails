@@ -10,4 +10,8 @@ module BlogPostsHelper
       field.date_field :created_at, required: true
     end
   end
+
+  def append_slash(counter_value, total_size)
+    "/" unless counter_value + 1 == total_size
+  end
 end

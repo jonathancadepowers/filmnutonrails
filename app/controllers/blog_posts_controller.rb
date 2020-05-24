@@ -2,11 +2,11 @@
 
 class BlogPostsController < StandardItemController
   include Reportable
-  skip_before_action :authenticate_user!, only: %i[all show]
-  before_action :hydrate_sidebar_data, only: [:all, :show]
+  skip_before_action :authenticate_user!, only: %i[all show archives tag year]
+  before_action :hydrate_sidebar_data, only: %i[all show archives year tag]
 
   def all
-    @all_blog_posts = BlogPost.all.order("created_at DESC").limit(10)    
+    @all_blog_posts = BlogPost.all.order("created_at DESC").limit(10)
     render layout: "main"
   end
 
@@ -47,6 +47,26 @@ class BlogPostsController < StandardItemController
     @result = @blog_post.update(blog_post_params)
     super
   end
+
+  def archives
+    @tag_cloud = BlogPost.tag_counts_on(:tags)
+    @posts_by_year = BlogPost.posts_by_year
+    @recommended_posts = BlogPost.where(recommended: true)
+    render layout: "main"
+  end
+
+  def tag
+    @tagged_posts = BlogPost.tagged_with(params[:tag], on: :tags)
+    @requested_tag = params[:tag]
+    render layout: "main"
+  end
+
+  def year
+    @posts_in_year = BlogPost.where("extract(year from created_at) = ?",
+                                    params[:year])
+    @requsted_year = params[:year]
+    render layout: "main"
+  end
 end
 
 private
@@ -55,7 +75,9 @@ def blog_post_params
   params.require(:blog_post).permit(
     :title,
     :body,
-    :created_at
+    :created_at,
+    :tag_list,
+    :recommended
   )
 end
 
