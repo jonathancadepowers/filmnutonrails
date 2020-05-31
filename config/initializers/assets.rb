@@ -25,6 +25,7 @@ Rails.application.config.assets.precompile += %w( pages.css )
 Rails.application.config.assets.precompile += %w( devise/sessions.css )
 Rails.application.config.assets.precompile += %w( devise/registrations.css )
 Rails.application.config.assets.precompile += %w( artifacts.css )
+Rails.application.config.assets.precompile += %w( life_logs.css )
 
 
 # Precompile additional assets.

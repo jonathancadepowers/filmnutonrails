@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class FilmsController < StandardItemController
-  include Reportable
   skip_before_action :authenticate_user!, only: [:all]
+
   def all
     @all_films = Film.all.order("title ASC")
     @total_film_count = Film.count
@@ -17,6 +17,8 @@ class FilmsController < StandardItemController
 
   def create
     @film = Film.new(film_params)
+    @display_timestamp = @film.consumed_on
+    @film.save
     super
   end
 
@@ -38,8 +40,9 @@ class FilmsController < StandardItemController
   end
 
   def update
-    @film = Film.find(params[:id])
-    @result = @film.update(film_params)
+    @object = Film.find(params[:id])
+    @object_result = @object.update(film_params)
+    @display_timestamp = @object.consumed_on
     super
   end
 

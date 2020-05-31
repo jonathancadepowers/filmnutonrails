@@ -16,4 +16,6 @@
     <%= render partial: "single_post_year", collection: @posts_by_year %>
   </div>
 <% end %>
-<%= render "sidebar" %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>

@@ -1,11 +1,9 @@
-<% content_for :sidebar do %>
-  <p style="text-align:left;">
-    <%= pie_chart @shows_grouped_by_ratings,donut: true,
-                                            width: "225px",                                             
-                                            colors: ["#F8C0C0ff", "#612A2Aff", "#F06768", "#FCE3E3ff", "#A54748ff"], 
-                                            legend: true, 
-                                            title: "Shows by Star Rating", 
-                                            library: {legend: {position: 'bottom'}, 
-                                                      title: {fontFamily: 'Verdana', fontSize: 20} } %>
-  </p>
-<% end %>
+<p style="text-align:left;">
+  <%= pie_chart @shows_grouped_by_ratings,donut: true,
+                                          width: "225px",                                             
+                                          colors: ["#F8C0C0ff", "#612A2Aff", "#F06768", "#FCE3E3ff", "#A54748ff"], 
+                                          legend: true, 
+                                          title: "Shows by Star Rating", 
+                                          library: {legend: {position: 'bottom'}, 
+                                                    title: {fontFamily: 'Verdana', fontSize: 20} } %>
+</p>

@@ -6,4 +6,6 @@
 <% content_for :body do %>
   <%= render partial: "single_blog_post", collection: @posts_in_year %>
 <% end %>
-<%= render "sidebar" %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>

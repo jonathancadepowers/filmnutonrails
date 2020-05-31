@@ -1,0 +1,53 @@
+<p><b>Hi. I'm Jonathan.</b><br>
+  <div class="sidebar_intro">
+    <ul>
+      <li>I <%= link_to "write about", blog_posts_all_path %> pop culture and technology. <%= link_to "Archives here", blog_posts_archives_path %>.</li>
+      <li>I track every <%= link_to "film", films_all_path %>, <%= link_to "TV show", tv_shows_all_path %>, and <%= link_to "book", books_all_path %> I consume.</li>
+      <li>I'm all about <%= link_to "life logging", life_logs_all_path %> (beta).</li>
+    </ul>
+  </div>
+</p>
+<p class="social_icons blank_links">
+  <a href="https://twitter.com/filmnut" target=_blank"><%= fa_icon "twitter-square" %></a>
+  <a href="https://www.instagram.com/jonathanpowers/" target=_blank"><%= fa_icon "instagram" %></a>
+  <a href="https://github.com/jonathancadepowers" target=_blank"><%= fa_icon "github-square" %></a>
+  <a href="https://www.linkedin.com/in/jpow" target=_blank"><%= fa_icon "linkedin-square" %></a>
+</p>
+<p class="embed">
+  <span class="sidebar_header">My Latest Pics</span>
+  <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/c0c1c21b4d9c5450a0d07423e16fa841.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;margin-top:9px;"></iframe>
+</p>
+<p class="embed">
+  <span class="sidebar_header">What I'm Listening To</span>
+  <iframe src="https://open.spotify.com/embed/playlist/0SOGFFL4JiMXfvo11jTRIg" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="margin-top:9px;"></iframe>
+</p>
+<p>
+  <span class="sidebar_header">Last Ten Movies I've Seen</span>
+  <ul class="media_links">
+    <% @last_10_films_consumed.each do |film| %>
+      <li>
+        <%= link_to film.title, film.url, target: "_blank"%>
+      </li>
+    <% end %>
+  </ul>
+</p>
+<p>
+  <span class="sidebar_header">Last Ten TV Shows I've Watched</span>
+  <ul class="media_links">
+    <% @last_10_shows_consumed.each do |show| %>
+      <li>
+        <%= link_to show.title, show.url, target: "_blank" %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+<p>
+  <span class="sidebar_header">Last Ten Books I've Read</span>
+  <ul class="media_links">
+    <% @last_10_books_consumed.each do |book| %>
+      <li>
+        <%= link_to book.title, book.url, target: "_blank" %>
+      </li>
+    <% end %>
+  </ul>
+</p>

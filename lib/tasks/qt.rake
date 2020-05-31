@@ -3,8 +3,13 @@ require "rails-html-sanitizer.rb"
 
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
-	task qt: :environment do	
+	task qt: :environment do
 
+		day = "20200530"
+		day_start = Date.strptime(day, "%Y%m%d").beginning_of_day
+
+		ap day_start
+		
 	end
 
 	task get_object_by_attribute: :environment do

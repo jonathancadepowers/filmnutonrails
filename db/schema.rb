@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_133333) do
+ActiveRecord::Schema.define(version: 2020_05_25_022643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_133333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "recommended", default: true
+    t.integer "life_log_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_133333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authors"
+    t.integer "life_log_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -84,6 +86,14 @@ ActiveRecord::Schema.define(version: 2020_05_23_133333) do
     t.float "running_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "life_log_id"
+  end
+
+  create_table "life_logs", force: :cascade do |t|
+    t.datetime "display_timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "related_object_type"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -120,6 +130,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_133333) do
     t.datetime "consumed_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "life_log_id"
   end
 
   create_table "users", force: :cascade do |t|

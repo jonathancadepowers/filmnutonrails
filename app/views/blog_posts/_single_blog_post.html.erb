@@ -1,16 +1,14 @@
-<% content_for :body do %>
-  <div class="blog_post_container">
-    <h2 class="blog_post_title"><%= single_blog_post.title %></h2>
-    <div class="blog_post_timestamp">
-      <%= fa_icon "calendar" %>
-      <%= link_to single_blog_post.created_at.strftime("Posted %B %e, %Y"), single_blog_post %>
-    </div>
-    <%# TODO: Direclty outputting the raw "body" content below is causing a Brakeman warning. %>
-    <%= single_blog_post.body.html_safe %>
-    <div>
-      <%= fa_icon "tags" %> <span class="tag_list_label">More Posts About...</span>
-      <%= render partial: "single_tag_in_list", collection: single_blog_post.tag_list, :locals => {:tag_list_count => single_blog_post.tag_list.count} %>
-    </div>
-    <hr>
+<div class="blog_post_container">
+  <h2 class="blog_post_title"><%= single_blog_post.title %></h2>
+  <div class="blog_post_timestamp">
+    <%= fa_icon "calendar" %>
+    <%= link_to single_blog_post.created_at.strftime("Posted %B %e, %Y"), single_blog_post %>
   </div>
-<% end %>
+  <%# TODO: Direclty outputting the raw "body" content below is causing a Brakeman warning. %>
+  <%= single_blog_post.body.html_safe %>
+  <div>
+    <%= fa_icon "tags" %> <span class="tag_list_label">More Posts About...</span>
+    <%= render partial: "single_tag_in_list", collection: single_blog_post.tag_list, :locals => {:tag_list_count => single_blog_post.tag_list.count} %>
+  </div>
+  <hr>
+</div>

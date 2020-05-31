@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   
   root "blog_posts#all"
-  get 'artifacts/create'
-  get 'artifacts/destroy'
-  get 'artifacts/edit'
-  get 'artifacts/index'
-  get 'artifacts/new'
-  get 'artifacts/update'
-  get 'artifacts/clipboard_copy' => "artifacts#clipboard_copy"  
+  get "life_logs/all"
+  match "life_logs/:day" => "life_logs#day", :as => :life_log_day, via: [:get]
+  get "artifacts/create"
+  get "artifacts/destroy"
+  get "artifacts/edit"
+  get "artifacts/index"
+  get "artifacts/new"
+  get "artifacts/update"
+  get "artifacts/clipboard_copy" => "artifacts#clipboard_copy"  
   get "/blog_posts/archives" => "blog_posts#archives"
   match "blog_posts/year/:year" => "blog_posts#year", :as => :year, via: [:get]
   match "blog_posts/tag/:tag" => "blog_posts#tag", :as => :tag, via: [:get]

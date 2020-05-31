@@ -8,4 +8,6 @@ class Book < ApplicationRecord
             :rating,
             :consumed_on,
             presence: true
+
+  belongs_to :life_log
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class BlogPostsController < StandardItemController
-  include Reportable
   skip_before_action :authenticate_user!, only: %i[all show archives tag year]
   before_action :hydrate_sidebar_data, only: %i[all show archives year tag]
 
@@ -12,6 +11,7 @@ class BlogPostsController < StandardItemController
 
   def create
     @blog_post = BlogPost.new(blog_post_params)
+    @display_timestamp = @blog_post.created_at
     super
   end
 
@@ -43,8 +43,9 @@ class BlogPostsController < StandardItemController
   end
 
   def update
-    @blog_post = BlogPost.find(params[:id])
-    @result = @blog_post.update(blog_post_params)
+    @object = BlogPost.find(params[:id])
+    @object_result = @object.update(blog_post_params)
+    @display_timestamp = @object.created_at
     super
   end
 
@@ -56,7 +57,7 @@ class BlogPostsController < StandardItemController
   end
 
   def tag
-    @tagged_posts = BlogPost.tagged_with(params[:tag], on: :tags)
+    @tagged_posts = BlogPost.tagged_with(params[:tag])
     @requested_tag = params[:tag]
     render layout: "main"
   end
@@ -79,10 +80,4 @@ def blog_post_params
     :tag_list,
     :recommended
   )
-end
-
-def hydrate_sidebar_data
-  @last_10_films_consumed = last_n_consumed(Film, 10)
-  @last_10_shows_consumed = last_n_consumed(TvShow, 10)
-  @last_10_books_consumed = last_n_consumed(Book, 10)
 end

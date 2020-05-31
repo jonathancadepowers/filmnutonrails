@@ -1,0 +1,24 @@
+<div class="life_log_day_container">
+  <div class="row">
+    <div class="col-2">
+      <a href="<%= extract_perm_link_url(single_day_in_life_log) %>">
+        <figure>
+          <header>
+            <%= extract_month(single_day_in_life_log) %>
+          </header>
+          <section>
+            <%= extract_day(single_day_in_life_log) %>
+            <section class="day_of_week">
+              <%= extract_day_of_week(single_day_in_life_log) %>
+            </section>
+          </section>
+        </figure>
+      </a>
+    </div>
+    <div class="col-10" style="margin-top: -12px;">      
+      <%= render partial: "single_life_log", collection: extract_life_logs(single_day_in_life_log) %>
+    </div>
+  </div>
+</div>
+<hr>
+

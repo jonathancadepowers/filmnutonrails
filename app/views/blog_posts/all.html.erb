@@ -1,5 +1,9 @@
-<%= render partial: "single_blog_post", collection: @all_blog_posts %>
-<%= render "sidebar" %>
+<% content_for :body do %>
+  <%= render partial: "single_blog_post", collection: @all_blog_posts %>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>
 <% content_for :trailer do %>
   <div class="archive_teaser">
     <%= fa_icon "arrow-circle-right" %>

@@ -61,14 +61,14 @@
 }
 
 .inline_code {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   color: black;
   padding: 4px;
   font-family: "Courier New", Courier, monospace;
 }
 .code {
   display: inline-block;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   color: black;
   padding: 15px;
   margin-top: 10px;
@@ -80,6 +80,17 @@
 @font-face {
   font-family: LeagueMonoThin;
   src: font-url("/assets/LeagueMonoThin.otf");
-  
+
   /* src: url("LeagueMonoThin.otf"); */
+}
+
+.sidebar_intro ul {
+  width: 80%;
+  margin-top: 0px;
+  margin-left: -15px;
+  margin-bottom: 30px;
+}
+
+.sidebar_intro li {
+  margin-bottom: 13px;
 }

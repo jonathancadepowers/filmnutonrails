@@ -1,0 +1,8 @@
+<div class="row life_log_container">
+  <div class="col-s">
+    <span class="life_log_type_marker"><%= extract_life_log_marker(single_life_log) %></span>
+  </div>
+  <div class="col-9 log_body">
+    <%= render determine_life_log_partial(single_life_log), object: extract_related_object(single_life_log) %>
+  </div>
+</div>

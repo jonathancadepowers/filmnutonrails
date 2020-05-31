@@ -6,7 +6,11 @@ class BlogPost < ApplicationRecord
   validates :title,
             :body,
             presence: true
+
   has_many :comments, dependent: :nullify
+
+  belongs_to :life_log
+
   acts_as_taggable_on :tags
 
   def self.posts_by_year

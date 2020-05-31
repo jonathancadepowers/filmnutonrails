@@ -2,7 +2,6 @@
 
 class BooksController < StandardItemController
   skip_before_action :authenticate_user!, only: [:all]
-  include Reportable
   def all
     @all_books = Book.all.order("title ASC")
     @total_book_count = Book.count
@@ -13,6 +12,7 @@ class BooksController < StandardItemController
 
   def create
     @book = Book.new(book_params)
+    @display_timestamp = @book.consumed_on
     super
   end
 
@@ -34,8 +34,9 @@ class BooksController < StandardItemController
   end
 
   def update
-    @book = Book.find(params[:id])
-    @result = @book.update(book_params)
+    @object = Book.find(params[:id])
+    @object_result = @object.update(book_params)
+    @display_timestamp = @object.consumed_on
     super
   end
 

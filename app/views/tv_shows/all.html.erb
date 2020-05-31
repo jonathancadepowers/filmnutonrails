@@ -12,9 +12,13 @@
     </thead>
     <tbody>
     <% end %>
-    <%= render partial: "single_tv_show", collection: @all_tv_shows %>
+    <% content_for :body do %>
+      <%= render partial: "single_tv_show", collection: @all_tv_shows %>
+    <% end %>
     <% content_for :table_close do %>
     </tbody>
   </table>
 <% end %>
-<%= render "sidebar" %>
+<% content_for :sidebar do %>
+  <%= render "sidebar" %>
+<% end %>

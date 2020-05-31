@@ -4,6 +4,7 @@ require "rubygems"
 
 class Film < ApplicationRecord
   include Reportable
+
   validates :title,
             :url,
             :rating,
@@ -12,6 +13,8 @@ class Film < ApplicationRecord
             :release_year,
             :running_time,
             presence: true
+
+  belongs_to :life_log
 
   def self.build_release_year_chart
     Film.group(:release_year).order("release_year desc").count

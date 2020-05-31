@@ -14,9 +14,13 @@
     </thead>
     <tbody>
     <% end %>
-    <%= render partial: "single_film", collection: @all_films %>
+    <% content_for :body do %>
+      <%= render partial: "single_film", collection: @all_films %>
+    <% end %>
     <% content_for :table_close do %>
     </tbody>
   </table>
 <% end %>
-<%= render "sidebar" %>
+<% content_for :sidebar do %>
+  <%= render "sidebar" %>
+<% end %>

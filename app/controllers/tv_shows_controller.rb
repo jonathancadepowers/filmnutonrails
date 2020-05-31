@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TvShowsController < StandardItemController
-  include Reportable
   skip_before_action :authenticate_user!, only: [:all]
   def all
     @all_tv_shows = TvShow.all.order("title ASC")
@@ -13,6 +12,7 @@ class TvShowsController < StandardItemController
 
   def create
     @tv_show = TvShow.new(tv_show_params)
+    @display_timestamp = @tv_show.consumed_on
     super
   end
 
@@ -34,8 +34,9 @@ class TvShowsController < StandardItemController
   end
 
   def update
-    @tv_show = TvShow.find(params[:id])
-    @result = @tv_show.update(tv_show_params)
+    @object = TvShow.find(params[:id])
+    @object_result = @object.update(tv_show_params)
+    @display_timestamp = @object.consumed_on
     super
   end
 

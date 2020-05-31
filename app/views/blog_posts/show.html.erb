@@ -1,8 +1,12 @@
-<%= render partial: "single_blog_post", collection: @single_blog_post_as_array %>
+<% content_for :body do %>
+  <%= render partial: "single_blog_post", collection: @single_blog_post_as_array %>
+<% end %>
 <% content_for :trailer do %>
   <div class="return_to_homepage">
     <%= fa_icon "arrow-circle-left" %>
     <%= link_to "Back to homepage...", root_path %>
   </div>
 <% end %>
-<%= render "sidebar" %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>

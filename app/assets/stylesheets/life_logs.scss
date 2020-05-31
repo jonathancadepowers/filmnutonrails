@@ -1,0 +1,129 @@
+.life_log_teaser {
+  background-color: #fcf4a4;
+  border-radius: 6px;
+  margin-top: -10px;
+  margin-bottom: 40px;
+  padding: 8px 10px 8px 10px;
+  font-weight: bold;
+}
+
+.life_log_day_container {
+  margin-top: 30px;
+  margin-bottom: 33px;
+}
+
+.life_log_container {
+  margin-top: 16px;
+}
+
+.life_log_type_marker {
+  padding: 4px 7px 4px 7px;
+  background-color: #ededed;
+  border-radius: 6px;
+  font-size: 12.5px;
+  margin-right: 5px;
+}
+
+.log_body {
+  margin-left: -8px;
+}
+
+figure {
+  margin: 30px auto;
+  margin-top: 0px;
+  margin-bottom: 30px;
+
+  width: 70px;
+  height: 40px;
+
+  background-color: white;
+  border-radius: 10px;
+
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+
+    width: 70px;
+    height: 72px;
+
+    border-radius: 10px 10px;
+
+    background-image: -webkit-linear-gradient(#f1f2f2 0%, #f1f2f2 100%);
+    background-image: -moz-linear-gradient(#f1f2f2 0%, #f1f2f2 100%);
+    background-image: -o-linear-gradient(#f1f2f2 0%, #f1f2f2 100%);
+    background-image: linear-gradient(#f1f2f2 0%, #f1f2f2 100%);
+  }
+
+  header {
+    width: 70px;
+    height: 27px;
+
+    position: absolute;
+    top: -1px;
+
+    background-color: #f06768;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 3px solid #f1f2f2;
+
+    font: 400 12.5px/24px Arial, Helvetica, Geneva, sans-serif;
+    letter-spacing: 0.5px;
+    color: #fff;
+
+    text-align: center;
+  }
+
+  section {
+    width: 70px;
+    height: 50px;
+
+    position: absolute;
+    top: 8px;
+
+    font: 400 25px/61px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    letter-spacing: 0px;
+    color: #4c566b;
+
+    text-align: center;
+
+    z-index: 10;
+
+    &:before {
+      content: "";
+      display: block;
+
+      position: absolute;
+      top: 25px;
+
+      width: 3px;
+      height: 10px;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+
+      position: absolute;
+      top: 25px;
+      right: 0;
+
+      width: 3px;
+      height: 10px;
+    }
+  }
+}
+
+.day_of_week {
+  font-size: 11px;
+  margin-top: 13px;
+  color: #4c566b;
+  font: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  letter-spacing: 0px;
+}
+
+.return_to_life_log_root {
+  padding-bottom: 50px;
+  position: relative;
+  top: -30;
+}

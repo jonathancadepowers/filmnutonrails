@@ -1,0 +1,23 @@
+<% content_for :head do %>
+  <div class="life_log_teaser">
+    <% if action_name == "all" %>
+      <b>Welcome to my <%= link_to "life log", "https://en.wikipedia.org/wiki/Lifelog", target: "_blank" %>!</b> You're looking at a reverse-chronologicaly-organized dataset of my daily activites, happenings, accomplishments, consumptions, and events. (Still in beta.)
+    <% elsif action_name == "day" %>
+      You're viewing all life log activites for a single day. Check out the <%= link_to "main life log feed", life_logs_all_path %> for more.
+    <% end %>
+  </div>
+<% end %>
+<% content_for :body do %>
+  <%= render partial: "single_day_in_life_log", collection: @life_logs_set_grouped_by_day %>
+<% end %>
+<% if action_name == "day" %>
+  <% content_for :trailer do %>
+    <div class="return_to_life_log_root">
+      <%= fa_icon "arrow-circle-left" %>
+      <%= link_to "Back to all life logs...", life_logs_all_path %>
+    </div>
+  <% end %>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>
