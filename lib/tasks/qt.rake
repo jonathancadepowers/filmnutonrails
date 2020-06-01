@@ -5,10 +5,16 @@ namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
 
-		day = "20200530"
-		day_start = Date.strptime(day, "%Y%m%d").beginning_of_day
+		all = LifeLog.all
+           .limit(10)
+           .order("display_timestamp DESC")
+           .group_by_day(&:display_timestamp)
+					 .group_by_month { |d| d[0] }
+					 .reverse_each
 
-		ap day_start
+		all.each { |x|
+			ap x 
+		}
 		
 	end
 

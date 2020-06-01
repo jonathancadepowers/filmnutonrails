@@ -8,7 +8,8 @@
   </div>
 <% end %>
 <% content_for :body do %>
-  <%= render partial: "single_day_in_life_log", collection: @life_logs_set_grouped_by_day %>
+  <div style="margin-top: -30px;"></div>
+  <%= render partial: "single_month_in_life_log", collection: @life_logs_set_grouped_by_month_then_day %>
 <% end %>
 <% if action_name == "day" %>
   <% content_for :trailer do %>

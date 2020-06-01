@@ -7,6 +7,16 @@
   font-weight: bold;
 }
 
+.month_header {
+  font-size: 15px;
+  margin-top: 15px;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+  padding: 7px;
+  padding-bottom: 3px;
+  display: inline-block;
+}
+
 .life_log_day_container {
   margin-top: 30px;
   margin-bottom: 33px;
@@ -22,6 +32,11 @@
   border-radius: 6px;
   font-size: 12.5px;
   margin-right: 5px;
+}
+
+.log_column {
+  margin-top: -20px;
+  margin-left: 30px;
 }
 
 .log_body {

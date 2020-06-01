@@ -15,6 +15,7 @@ class LifeLog < ApplicationRecord
            .limit(count)
            .order("display_timestamp DESC")
            .group_by_day(&:display_timestamp)
+           .group_by_month { |d| d[0] }
            .reverse_each
   end
 
@@ -24,6 +25,7 @@ class LifeLog < ApplicationRecord
     LifeLog.where(display_timestamp: day_start..day_end)
            .order("display_timestamp DESC")
            .group_by_day(&:display_timestamp)
+           .group_by_month { |d| d[0] }
            .reverse_each
   end
 end

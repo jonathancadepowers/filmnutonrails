@@ -1,0 +1,8 @@
+<% if action_name == "all" %>
+  <div class="month_header">
+    LIFE LOGS FROM <%= extract_month_header(single_month_in_life_log) %>
+  </div>
+<% elsif action_name == "day" %>
+  <div style="margin-top:55px;"></div>
+<% end %>
+<%= render partial: "single_day_in_life_log", collection: extract_days_from_month_set(single_month_in_life_log) %>  
