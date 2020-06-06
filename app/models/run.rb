@@ -2,6 +2,7 @@
 
 class Run < ApplicationRecord
   validates :miles,
+            :run_time,
             :location,
             presence: true
 

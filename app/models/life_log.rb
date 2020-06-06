@@ -21,8 +21,8 @@ class LifeLog < ApplicationRecord
   end
 
   def self.life_logs_set_single_day(day)
-    day_start = Date.strptime(day, "%Y%m%d").beginning_of_day
-    day_end = Date.strptime(day, "%Y%m%d").end_of_day
+    day_start = DateTime.strptime(day, "%Y%m%d").in_time_zone(Time.zone).beginning_of_day
+    day_end = DateTime.strptime(day, "%Y%m%d").in_time_zone(Time.zone).end_of_day
     LifeLog.where(display_timestamp: day_start..day_end)
            .order("display_timestamp DESC")
            .group_by_day(&:display_timestamp)
