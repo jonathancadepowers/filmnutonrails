@@ -5,6 +5,7 @@ class LifeLog < ApplicationRecord
   has_one :film, dependent: :nullify
   has_one :tv_show, dependent: :nullify
   has_one :book, dependent: :nullify
+  has_one :run, dependent: :nullify
 
   validates :display_timestamp,
             :related_object_type,

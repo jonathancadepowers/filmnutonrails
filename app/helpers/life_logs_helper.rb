@@ -40,4 +40,10 @@ module LifeLogsHelper
   def extract_related_object_from_single_life_log(single_life_log)
     single_life_log.public_send(single_life_log.related_object_type)
   end
+
+  def format_run_location(location)
+    locations = { "Home - Peloton" => "on my home Peloton",
+                  "Hotel - Treadmill" => "on a treadmill at a hotel" }
+    locations[location]
+  end
 end

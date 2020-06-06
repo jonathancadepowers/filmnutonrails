@@ -9,11 +9,13 @@ module StandardItemHelper
     instance_variable_get("@#{controller_name.singularize}")
   end
 
+  # TODO: There must be a less-hardcody way to handle this.
   def nice_controller_name(controller_name)
     { "films" => "film",
       "tv_shows" => "show",
       "blog_posts" => "post",
       "artifacts" => "artifact",
+      "runs" => "run",
       "books" => "book" }[controller_name]
   end
 

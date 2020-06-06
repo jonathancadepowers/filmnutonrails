@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rubygems"
+require "rubygems" # TODO: Is this needed?
 
 class Film < ApplicationRecord
   include Reportable

@@ -1,0 +1,14 @@
+  <tr>
+    <th scope="row">
+      <%= single_run.miles %>
+    </th>
+    <td>
+      <%= format_run_time_long(single_run.run_time) %>
+    </td>
+    <td>
+      <%= single_run.location %>
+    </td>
+    <td>
+      <%= single_run.created_at.strftime("%b %-d, %Y") %>
+    </td>
+  </tr>

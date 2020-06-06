@@ -16,7 +16,7 @@
     <%= f.text_field(:tag_list, label: "Tags", value: @blog_post.tag_list.join(", ")) %>
   </p>
   <p>
-    <%= build_created_at_field(f, action_name) %>
+    <%= build_created_at_field(f, action_name, "Publish Date") %>
   </p>
   <p>
     <%= f.check_box(:recommended, { checked: calculate_checked_state(@blog_post, @blog_post.recommended, false), label: "Recommended?" }) %>
