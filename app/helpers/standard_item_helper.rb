@@ -9,6 +9,12 @@ module StandardItemHelper
     instance_variable_get("@#{controller_name.singularize}")
   end
 
+  def destroy_object_and_life_log(object)
+    ll_result = object.life_log.present? ? object.life_log.destroy : false
+    obj_result = object.destroy
+    ll_result && obj_result ? true : false
+  end
+
   # TODO: There must be a less-hardcody way to handle this.
   def nice_controller_name(controller_name)
     { "films" => "film",

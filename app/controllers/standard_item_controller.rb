@@ -24,8 +24,8 @@ class StandardItemController < ApplicationController
   # Generic instance destruction method.
   def destroy
     object = set_object
-    object.destroy
-    if object.destroyed?
+    result = destroy_object_and_life_log(object)
+    if result
       flash[:notice] = "The
         #{nice_controller_name(controller_name)} was deleted."
     else
