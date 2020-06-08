@@ -22,6 +22,7 @@ module StandardItemHelper
       "blog_posts" => "post",
       "artifacts" => "artifact",
       "runs" => "run",
+      "podcast_episodes" => "podcast episode",
       "books" => "book" }[controller_name]
   end
 

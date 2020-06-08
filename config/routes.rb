@@ -19,11 +19,12 @@ Rails.application.routes.draw do
   get "/films/tmdb_get_film_attributes" => "films#tmdb_get_film_attributes"
   get "/blog_posts/all" => "blog_posts#all"
   get "/runs/all" => "runs#all"
+  get "/podcast_episodes/all" => "podcast_episodes#all"
   get "/films/all" => "films#all"
   get "/tv_shows/all" => "tv_shows#all"
   get "/books/all" => "books#all"
   patch "/users/handle_admin_approval" => "users#handle_admin_approval"
-  resources :films, :tv_shows, :books, :users, :artifacts, :runs
+  resources :films, :tv_shows, :books, :users, :artifacts, :runs, :podcast_episodes
   resources :blog_posts do
     resources :comments
   end

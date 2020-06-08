@@ -12,6 +12,7 @@ class StandardItemController < ApplicationController
     object = set_object
     object.create_life_log(display_timestamp: @display_timestamp,
                            related_object_type: controller_name.singularize)
+
     if object.save == true
       flash[:notice] = "The new
         #{nice_controller_name(controller_name)} was added."

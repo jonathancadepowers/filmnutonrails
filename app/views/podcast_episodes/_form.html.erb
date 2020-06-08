@@ -1,0 +1,48 @@
+<%= bootstrap_form_for(@podcast_episode, label_errors: true) do |f| %>
+  <div class="existing_podcast existing_podcast_show">
+    <%= f.collection_select :podcast_id, 
+      Podcast.all, :id, :title,  
+      :include_blank => true,
+      :label => "Podcast Series" %>
+  </div>
+  <p>
+    <%= f.check_box :create_new_podcast_option, label: "Create new podcast series?" %>
+  </p>
+  <div class="new_podcast new_podcast_hide">
+    <%= f.fields_for :podcast, Podcast.new do |podcast_attributes|%>
+      <%= podcast_attributes.text_field :title, label: "New Podcast Series Title" %>
+      <%= podcast_attributes.text_field :url, label: "New Podcast Series URL" %>
+    <% end %>
+  </div>
+  <p>
+    <%= f.text_field :title,
+			:size => "50",
+      :label => "Episode Title"
+	%>
+  </p>
+  <p>
+    <%= f.select :reaction, 
+			["Not Bad","Loved It!","Hated It!"], 
+			:include_blank => true
+	%>
+  </p>
+  <p>
+    <%= f.date_field :consumed_on,
+			label: "Consumed On",
+			max: Date.today
+	%>
+  </p>
+  <p>
+    <%-# Only shows a "delete" button if the podcast episode exists. -%>
+    <% if @podcast_episode.id.blank? == false %>
+      <%= link_to 'Delete Podcast Episode',
+                @podcast_episode,
+                method: :delete,
+                data: { confirm: 'Sounds dicey! You sure?' }
+        %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class RunsController < StandardItemController
+  skip_before_action :authenticate_user!, only: [:all]
   before_action :hydrate_sidebar_data, only: %i[all]
 
   def all
