@@ -9,6 +9,5 @@ class PodcastEpisode < ApplicationRecord
             :reaction,
             :consumed_on,
             :life_log_id,
-            :podcast_id,
             presence: true
 end
