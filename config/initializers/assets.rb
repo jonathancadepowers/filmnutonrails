@@ -26,7 +26,8 @@ Rails.application.config.assets.precompile += %w( devise/sessions.css )
 Rails.application.config.assets.precompile += %w( devise/registrations.css )
 Rails.application.config.assets.precompile += %w( artifacts.css )
 Rails.application.config.assets.precompile += %w( life_logs.css )
-
+Rails.application.config.assets.precompile += %w( runs.css )
+Rails.application.config.assets.precompile += %w( podcast_episodes.css )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

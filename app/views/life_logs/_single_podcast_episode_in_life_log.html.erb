@@ -1,0 +1,6 @@
+Listened to an episode of the 
+  <%= link_to object.podcast.title, 
+  object.podcast.url, target: "_blank" %> 
+  podcast series titled <%= link_to object.title, 
+  podcast_episode_google_search_url(object.podcast.title, 
+  object.title), target: "_blank" %>.

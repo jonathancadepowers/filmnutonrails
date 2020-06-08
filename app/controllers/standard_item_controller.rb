@@ -12,6 +12,7 @@ class StandardItemController < ApplicationController
     object = set_object
     object.create_life_log(display_timestamp: @display_timestamp,
                            related_object_type: controller_name.singularize)
+
     if object.save == true
       flash[:notice] = "The new
         #{nice_controller_name(controller_name)} was added."
@@ -24,8 +25,8 @@ class StandardItemController < ApplicationController
   # Generic instance destruction method.
   def destroy
     object = set_object
-    object.destroy
-    if object.destroyed?
+    result = destroy_object_and_life_log(object)
+    if result
       flash[:notice] = "The
         #{nice_controller_name(controller_name)} was deleted."
     else

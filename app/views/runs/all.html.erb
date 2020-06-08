@@ -1,0 +1,25 @@
+<% content_for :head do %>
+  <div class="media_teaser">A reverse-chronological list of every run that I force myself to do. I may not run very far, but I'm also quite slow!</div>
+<% end %>
+<% content_for :table_open do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Miles Run</th>
+        <th scope="col">Run Time</th>
+        <th scope="col">Location</th>
+        <th scope="col">Date/Time</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% end %>
+    <% content_for :body do %>
+      <%= render partial: "single_run", collection: @all_runs %>
+    <% end %>
+    <% content_for :table_close do %>
+    </tbody>
+  </table>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>

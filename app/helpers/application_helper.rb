@@ -22,4 +22,20 @@ module ApplicationHelper
   def append_slash(counter_value, total_size, add_value)
     " / " unless counter_value + add_value == total_size
   end
+
+  # Sets a field's default value, respecting "new" versus "edit" actions.
+  def default_form_value(object, value_if_new, value_if_not_new)
+    object.new_record? ? value_if_new : value_if_not_new
+  end
+
+  def build_created_at_field(field, _action_namel, label)
+    if action_name == "new"
+      field.date_field :created_at,
+                       required: true,
+                       value: Time.zone.now.strftime("%Y-%m-%d"),
+                       label: label
+    elsif action_name == "edit"
+      field.date_field :created_at, required: true, label: label
+    end
+  end
 end

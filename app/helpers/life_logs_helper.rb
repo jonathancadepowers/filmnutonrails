@@ -22,7 +22,11 @@ module LifeLogsHelper
   end
 
   def extract_life_log_marker(single_life_log)
-    single_life_log.related_object_type.tr("_", " ").upcase
+    if single_life_log.related_object_type == "podcast_episode"
+      "PODCAST"
+    else
+      single_life_log.related_object_type.tr("_", " ").upcase
+    end
   end
 
   def extract_life_logs_from_day(single_day_in_life_log)
@@ -39,5 +43,16 @@ module LifeLogsHelper
 
   def extract_related_object_from_single_life_log(single_life_log)
     single_life_log.public_send(single_life_log.related_object_type)
+  end
+
+  def format_run_location(location)
+    locations = { "Home - Peloton" => "on my home Peloton",
+                  "Hotel - Treadmill" => "on a treadmill at a hotel" }
+    locations[location]
+  end
+
+  def podcast_episode_google_search_url(podcast_title, episode_title)
+    "https://www.google.com/search?q=podcast /
+    " + podcast_title + "+" + episode_title
   end
 end

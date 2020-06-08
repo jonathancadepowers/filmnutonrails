@@ -1,0 +1,25 @@
+<% content_for :head do %>
+  <div class="media_teaser">I consume more podcasts than is probably healthy. I track each episode that I've listened to here.</div>
+<% end %>
+<% content_for :table_open do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Podcast Series</th>
+        <th scope="col">Episode</th>
+        <th scope="col">Date Listened To</th>
+        <th scope="col">Reaction</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% end %>
+    <% content_for :body do %>
+      <%= render partial: "single_podcast_episode", collection: @all_podcast_episodes %>
+    <% end %>
+    <% content_for :table_close do %>
+    </tbody>
+  </table>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>

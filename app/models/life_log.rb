@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class LifeLog < ApplicationRecord
+  include LifeLogable
+
   has_one :blog_post, dependent: :nullify
   has_one :film, dependent: :nullify
   has_one :tv_show, dependent: :nullify
   has_one :book, dependent: :nullify
+  has_one :run, dependent: :nullify
+  has_one :podcast_episode, dependent: :nullify
 
   validates :display_timestamp,
             :related_object_type,
@@ -15,13 +19,14 @@ class LifeLog < ApplicationRecord
            .limit(count)
            .order("display_timestamp DESC")
            .group_by_day(&:display_timestamp)
+           .reverse_each
            .group_by_month { |d| d[0] }
            .reverse_each
   end
 
   def self.life_logs_set_single_day(day)
-    day_start = Date.strptime(day, "%Y%m%d").beginning_of_day
-    day_end = Date.strptime(day, "%Y%m%d").end_of_day
+    day_start = LifeLogable.get_day_boundary(day, "beginning")
+    day_end = LifeLogable.get_day_boundary(day, "end")
     LifeLog.where(display_timestamp: day_start..day_end)
            .order("display_timestamp DESC")
            .group_by_day(&:display_timestamp)

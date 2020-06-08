@@ -55,12 +55,30 @@
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <%= fa_icon "file" %>&nbsp;&nbsp;Artifacts
+      <%= fa_icon "trophy" %>&nbsp;&nbsp;Runs
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="<%= artifacts_path %>">All Artifacts</a>
-      <a class="dropdown-item" href="<%= new_artifact_path %>">Upload New Artifact</a></a>
+      <a class="dropdown-item" href="<%= runs_path %>">All Runs</a>
+      <a class="dropdown-item" href="<%= new_run_path %>">Submit New Run</a></a>
   </div>
+</li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= fa_icon "podcast" %>&nbsp;&nbsp;Podcasts
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="<%= podcast_episodes_path %>">All Podcast Episodes</a>
+    <a class="dropdown-item" href="<%= new_podcast_episode_path %>">Submit New Podcast Episode</a></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= fa_icon "file" %>&nbsp;&nbsp;Artifacts
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="<%= artifacts_path %>">All Artifacts</a>
+    <a class="dropdown-item" href="<%= new_artifact_path %>">Upload New Artifact</a></a>
+</div>
 </li>
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

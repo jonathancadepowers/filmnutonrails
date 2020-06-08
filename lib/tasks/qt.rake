@@ -4,17 +4,21 @@ require "rails-html-sanitizer.rb"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
+		
+		def title_run(timestamp, miles, run_time)
+			title_values = { timestamp.to_date.strftime("%a, %b") => " ",
+											 timestamp.to_date.day.ordinalize => ", ",
+											 timestamp.to_date.strftime("%Y") => " - ",
+											 miles.to_s => " - ",
+											 ChronicDuration.output(run_time, format: :short) => "" }
+			title_values.each_with_object("") { |i,title| 
+				title << i[0] + i[1]
+			}
+		end
 
-		all = LifeLog.all
-           .limit(10)
-           .order("display_timestamp DESC")
-           .group_by_day(&:display_timestamp)
-					 .group_by_month { |d| d[0] }
-					 .reverse_each
+		run = Run.last
 
-		all.each { |x|
-			ap x 
-		}
+		title_run(run.created_at, run.miles, run.run_time)
 		
 	end
 
