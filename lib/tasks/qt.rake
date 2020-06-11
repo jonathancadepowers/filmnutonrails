@@ -4,15 +4,17 @@ require "rails-html-sanitizer.rb"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
-	
 		
-	end
-
-	task delete_orphanced_life_logs
-
 		LifeLog.all.each { |l|
 			l.destroy if l.public_send(l.related_object_type).nil?
 		}
+		
+	end
+
+	task get_object_by_attribute: :environment do
+
+		film = Film.where(title: ["Dogtooth"])
+		puts film.inspect
 
 	end
 
