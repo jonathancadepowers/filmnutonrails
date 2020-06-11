@@ -5,7 +5,9 @@
       :include_blank => true,
       :label => "Podcast Series" %>
   </div>
-  <%= f.check_box :create_new_podcast_option, label: "Create new podcast series?" %>
+  <p>
+    <%= f.check_box :create_new_podcast_option, label: "Create new podcast series?" %>
+  </p>
   <div class="new_podcast new_podcast_hide">
     <%= f.fields_for :podcast, Podcast.new do |podcast_attributes|%>
       <%= podcast_attributes.text_field :title, label: "New Podcast Series Title" %>
