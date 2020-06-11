@@ -7,48 +7,25 @@ class StandardItemController < ApplicationController
 
   before_action :authenticate_user!
 
-  # Generic instance creation method.
   def create
     object = set_object
-    object.create_life_log(display_timestamp: @display_timestamp,
-                           related_object_type: controller_name.singularize)
-
-    if object.save == true
-      flash[:notice] = "The new
-        #{nice_controller_name(controller_name)} was added."
-      redirect_to(controller: controller_name.to_s, action: "index")
-    else
-      render action: "new"
-    end
+    ll_result = object.create_life_log(
+      display_timestamp: @display_timestamp,
+      related_object_type: controller_name.singularize
+    )
+    object.save && ll_result ? create_success : create_error(object)
   end
 
-  # Generic instance destruction method.
   def destroy
     object = set_object
     result = destroy_object_and_life_log(object)
-    if result
-      flash[:notice] = "The
-        #{nice_controller_name(controller_name)} was deleted."
-    else
-      flash[:error] = "An error occured while
-        attempting to delete the
-        #{nice_controller_name(controller_name)}."
-    end
+    result ? destroy_success : destroy_error(object)
     redirect_to(controller: controller_name.to_s, action: "index")
   end
 
-  # Generic instance update method.
   def update
-    @life_log_result = @object.life_log
-                              .update(display_timestamp: @display_timestamp)
-    if @object_result == true && @life_log_result == true
-      flash[:notice] = "The
-      #{nice_controller_name(controller_name)} was updated."
-      redirect_to(controller: controller_name.to_s, action: "index")
-    else
-      flash[:error] = "Uh oh!
-        Something went wrong when attempting to submit your update."
-      redirect_to action: :edit
-    end
+    ll_result = @object.life_log
+                       .update(display_timestamp: @display_timestamp)
+    @object_result && ll_result ? update_success : update_error(@object)
   end
 end

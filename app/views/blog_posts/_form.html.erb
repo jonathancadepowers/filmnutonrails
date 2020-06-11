@@ -1,32 +1,32 @@
 <%= bootstrap_form_for(@blog_post, label_errors: true) do |f| %>
-  <p>
-    <%= f.text_field :title,
+  <%= f.text_field :title,
 			:required => true,
 			:size=>"50"
 	  %>
-  </p>
-  <p>
-    <%= f.text_area :body,
+  <%= f.text_area :body,
 			label: "Body",
       class: "tinymce",
       :rows => 25
 	  %>
+  <%= f.text_field(:tag_list, 
+      label: "Tags", 
+      value: @blog_post.tag_list.join(", ")) 
+    %>
+  <%= build_created_at_field(f, action_name, 
+      "Publish Date") 
+    %>
+  <p>
+    <%= f.check_box(:recommended, 
+      { checked: calculate_checked_state(@blog_post, @blog_post.recommended, false), 
+      label: "Recommended?" }) 
+    %>
   </p>
   <p>
-    <%= f.text_field(:tag_list, label: "Tags", value: @blog_post.tag_list.join(", ")) %>
-  </p>
-  <p>
-    <%= build_created_at_field(f, action_name, "Publish Date") %>
-  </p>
-  <p>
-    <%= f.check_box(:recommended, { checked: calculate_checked_state(@blog_post, @blog_post.recommended, false), label: "Recommended?" }) %>
+    <%= link_to "Upload Images", new_artifact_path, target: :_blank %>
   </p>
   <p>
     <%= f.submit "Save" %>
   </p>
-</p>
-<%= link_to "Upload Images", new_artifact_path, target: :_blank %>
-<p>
   <p>
     <%-# Only shows a "delete" button if the post already exists. -%>
     <%-# TODO: Move this "if" logic 👇 into a helper.-%>

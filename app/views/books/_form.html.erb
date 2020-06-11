@@ -1,40 +1,29 @@
 <%= bootstrap_form_for(@book, label_errors: false) do |f| %>
-  <p>
-    <%= f.text_field :title,
+  <%= f.text_field :title,
 			:required => true,
 			:size=>"50"
 	%>
-  </p>
-  <p>
-    <%= f.url_field :url,
+  <%= f.url_field :url,
 			label: "URL",
 			:size=>"50",
 			:required => true
 	%>
-  </p>
-  <p>
-    <%= f.text_field :authors,
+  <%= f.text_field :authors,
 			label: "Author(s)",
 			:size=>"50",
 			:required => true
 	%>
-  </p>
-  <p>
-    <%= f.select :rating, 
+  <%= f.select :rating, 
 			[5, 4, 3, 2, 1], 
 			:required => true,
 			:include_blank => true
 	%>
-  </p>
-  <p>
-    <%= f.date_field :consumed_on,
+  <%= f.date_field :consumed_on,
 			label: "Consumed On",
 			max: Date.today,
 			:required => true
 	%>
-  </p>
   <p>
-    <%-# Only shows a "delete" button if the book exists. -%>
     <% if @book.id.blank? == false %>
       <%= link_to 'Delete Book',
                 @book,

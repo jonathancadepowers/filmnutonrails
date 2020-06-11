@@ -1,40 +1,31 @@
 <%= bootstrap_form_for(@run, label_errors: false) do |f| %>
-  <p>        
-    <%= f.select :miles,      
+  <%= f.select :miles,      
       options_for_select(["0.5", "1.0", "1.5", "2.0", "2.5", "3.0"], :selected => default_form_value(@run,"1.0",f.object.miles.to_s) ),
 			:required => true,
       :label => "Miles Run"
 	  %>
-  </p>
-  <p>
-    <%= f.text_field :run_time,
+  <%= f.text_field :run_time,
     :required => true,
     :placeholder => "MM:SS",
     :label => "Time to Finish Run",
     :value => populate_run_time_in_form(@run),
     :pattern => "(0?[1-9]|[1-5][0-9]):(0?[0-9]|[0-5][0-9])"
     %>
-  </p>
-  <p>
-    <%= f.select :location, 
+  <%= f.select :location, 
       options_for_select(["Home - Peloton", "Hotel - Treadmill"], f.object.location),
 			:required => true,
       :label => "Location"
 	  %>
-  </p>
+  <%= build_created_at_field(f, action_name, "Run Date") %>
   <p>
-    <%= build_created_at_field(f, action_name, "Run Date") %>
+    <% if @run.id.blank? == false %>
+      <%= link_to 'Delete Run',
+                    @run,
+                    method: :delete,
+                    data: { confirm: 'Sounds dicey! You sure?' }
+            %>
+    <% end %>
   </p>
-  <p>
-      <%-# Only shows a "delete" button if the run exists. -%>
-      <% if @run.id.blank? == false %>
-        <%= link_to 'Delete Run',
-                  @run,
-                  method: :delete,
-                  data: { confirm: 'Sounds dicey! You sure?' }
-          %>
-      <% end %>
-    </p>
   <p>
     <%= f.submit "Save" %>
   </p>

@@ -8,6 +8,5 @@ class PodcastEpisode < ApplicationRecord
   validates :title,
             :reaction,
             :consumed_on,
-            :life_log_id,
             presence: true
 end

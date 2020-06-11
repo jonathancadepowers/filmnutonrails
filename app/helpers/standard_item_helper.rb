@@ -37,4 +37,42 @@ module StandardItemHelper
   def object_edit_path(object)
     url_for(action: :edit, id: object.id)
   end
+
+  def create_success
+    flash[:notice] = "The new
+      #{nice_controller_name(controller_name)} was added."
+    redirect_to(controller: controller_name.to_s, action: "index")
+  end
+
+  def create_error(object)
+    flash[:error] = "Uh oh!
+        Something went wrong when attempting to submit your update.
+          Error(s): " + object.errors.full_messages.to_sentence
+    render action: "new"
+  end
+
+  def destroy_success
+    flash[:notice] = "The
+        #{nice_controller_name(controller_name)} was deleted."
+  end
+
+  def destroy_error(object)
+    flash[:error] = "An error occured while
+        attempting to delete the
+        #{nice_controller_name(controller_name)}.
+        Error(s): " + object.errors.full_messages.to_sentence
+  end
+
+  def update_success
+    flash[:notice] = "The
+      #{nice_controller_name(controller_name)} was updated."
+    redirect_to(controller: controller_name.to_s, action: "index")
+  end
+
+  def update_error(object)
+    flash[:error] = "Uh oh!
+        Something went wrong when attempting to submit your update.
+        Errors: " + object.errors.full_messages.to_sentence
+    redirect_to action: :edit
+  end
 end

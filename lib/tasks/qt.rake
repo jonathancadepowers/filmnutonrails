@@ -4,22 +4,16 @@ require "rails-html-sanitizer.rb"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
+	
 		
-		def title_run(timestamp, miles, run_time)
-			title_values = { timestamp.to_date.strftime("%a, %b") => " ",
-											 timestamp.to_date.day.ordinalize => ", ",
-											 timestamp.to_date.strftime("%Y") => " - ",
-											 miles.to_s => " - ",
-											 ChronicDuration.output(run_time, format: :short) => "" }
-			title_values.each_with_object("") { |i,title| 
-				title << i[0] + i[1]
-			}
-		end
+	end
 
-		run = Run.last
+	task delete_orphanced_life_logs
 
-		title_run(run.created_at, run.miles, run.run_time)
-		
+		LifeLog.all.each { |l|
+			l.destroy if l.public_send(l.related_object_type).nil?
+		}
+
 	end
 
 	task get_object_by_attribute: :environment do

@@ -5,35 +5,29 @@
       :include_blank => true,
       :label => "Podcast Series" %>
   </div>
-  <p>
-    <%= f.check_box :create_new_podcast_option, label: "Create new podcast series?" %>
-  </p>
+  <%= f.check_box :create_new_podcast_option, label: "Create new podcast series?" %>
   <div class="new_podcast new_podcast_hide">
     <%= f.fields_for :podcast, Podcast.new do |podcast_attributes|%>
       <%= podcast_attributes.text_field :title, label: "New Podcast Series Title" %>
       <%= podcast_attributes.text_field :url, label: "New Podcast Series URL" %>
     <% end %>
   </div>
-  <p>
-    <%= f.text_field :title,
+  <%= f.text_field :title,
 			:size => "50",
-      :label => "Episode Title"
+      :label => "Episode Title",
+      :required => true
 	%>
-  </p>
-  <p>
-    <%= f.select :reaction, 
+  <%= f.select :reaction, 
 			["Not Bad","Loved It!","Hated It!"], 
-			:include_blank => true
+			:include_blank => true,
+      :required => true
 	%>
-  </p>
-  <p>
-    <%= f.date_field :consumed_on,
+  <%= f.date_field :consumed_on,
 			label: "Consumed On",
-			max: Date.today
+			max: Date.today,
+      :required => true
 	%>
-  </p>
   <p>
-    <%-# Only shows a "delete" button if the podcast episode exists. -%>
     <% if @podcast_episode.id.blank? == false %>
       <%= link_to 'Delete Podcast Episode',
                 @podcast_episode,

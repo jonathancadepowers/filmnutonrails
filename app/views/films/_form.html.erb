@@ -16,50 +16,37 @@
         :size=>"50"
     %>
     </p>
-    <p>
-      <%= f.select :rating, 
+    <%= f.select :rating, 
         [5, 4, 3, 2, 1], 
         :required => true,
         :include_blank => true
     %>
-    </p>
-    <p>
-      <%= f.url_field :url,
+    <%= f.url_field :url,
         label: "URL",
         :size=>"50",
         :required => true
     %>
-    </p>
-    <p>
-      <%= f.date_field :consumed_on,
+    <%= f.date_field :consumed_on,
         label: "Consumed On",
         max: Date.today,
         :required => true
     %>
-    </p>
-    <p>
-      <%= f.text_field :directors,
+    <%= f.text_field :directors,
         :size=>"50",
         :required => true
     %>
-    </p>
-    <p>
-      <%= f.number_field :release_year,
+    <%= f.number_field :release_year,
         label: "Release Year",
         min: 1900,
         max: Date.today.strftime("%Y"),
         :required => true
     %>
-    </p>
-    <p>
-      <%= f.number_field :running_time,
+    <%= f.number_field :running_time,
         label: "Running Time",
         min: 25, max: 500,
         :required => true
     %>
-    </p>
     <p>
-      <%-# Only shows a "delete" button if the film exists. -%>
       <% if @film.id.blank? == false %>
         <%= link_to 'Delete Film',
                   @film,
