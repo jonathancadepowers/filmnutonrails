@@ -28,14 +28,11 @@ module ApplicationHelper
     object.new_record? ? value_if_new : value_if_not_new
   end
 
-  def build_created_at_field(field, _action_namel, label)
-    if action_name == "new"
-      field.date_field :created_at,
-                       required: true,
-                       value: Time.zone.now.strftime("%Y-%m-%d"),
-                       label: label
-    elsif action_name == "edit"
-      field.date_field :created_at, required: true, label: label
+  def smart_date_field_value(date_value)
+    if date_value.nil?
+      Time.zone.now.strftime("%Y-%m-%d")
+    else
+      date_value.strftime("%Y-%m-%d")
     end
   end
 end

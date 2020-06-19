@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <%= link_to single_tv_show_season.tv_show.title, sanitize_link(single_tv_show_season.tv_show.url), target: "_blank" %><br>
+  </td>
+  <td>
+    <%= single_tv_show_season.season_title %>
+  </td>
+  <td>
+    <%= single_tv_show_season.consumed_on.strftime("%b %-d, %Y") %>
+  </td>
+  <td>
+    <% single_tv_show_season.rating.times do %>
+      <span style="color:#F06768"><%= fa_icon "star" %></span>
+    <% end %>
+  </td>
+</tr>

@@ -18,11 +18,12 @@
 			:required => true,
 			:include_blank => true
 	%>
-  <%= f.date_field :consumed_on,
-			label: "Consumed On",
-			max: Date.today,
-			:required => true
-	%>
+  <%= f.date_field :created_at,
+      required: true,
+      value: smart_date_field_value(@book.consumed_on),
+      max: Time.zone.today,
+      label: "Date Consumed" 
+    %>
   <p>
     <% if @book.id.blank? == false %>
       <%= link_to 'Delete Book',

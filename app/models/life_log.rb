@@ -5,7 +5,7 @@ class LifeLog < ApplicationRecord
 
   has_one :blog_post, dependent: :nullify
   has_one :film, dependent: :nullify
-  has_one :tv_show, dependent: :nullify
+  has_one :tv_show_season, dependent: :nullify
   has_one :book, dependent: :nullify
   has_one :run, dependent: :nullify
   has_one :podcast_episode, dependent: :nullify

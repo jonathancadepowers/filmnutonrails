@@ -1,0 +1,54 @@
+<%= bootstrap_form_for(@tv_show_season, label_errors: false) do |f| %>
+	<div class="existing_parent existing_parent_show">
+    <%= f.collection_select :tv_show_id, 
+      TvShow.all.order('title ASC'), :id, :title,  
+      {:include_blank => true, :label => 'TV Show'}, 
+      {:class => 'parent_select', :route => "/tv_shows/tv_show_lookup" } %>
+    <% if @tv_show_season.tv_show.nil? == false %>
+    <p>
+      <%= link_to "Edit TV Show", 
+        edit_tv_show_path(@tv_show_season.tv_show), 
+        id: "parent_edit_link", 
+        target: "_blank" %>
+    </p>
+  <% end %>
+  </div>
+	<p>
+    <%= f.check_box :create_new_tv_show_option, label: "Create new TV show?", class: "create_new_parent_option" %>
+  </p>
+	<div class="new_parent new_parent_hide">
+    <%= f.fields_for :tv_show, TvShow.new do |tv_show_attributes|%>
+      <%= tv_show_attributes.text_field :title, label: "New TV Show Title" %>
+      <%= tv_show_attributes.text_field :url, label: "New TV Show URL" %>
+    <% end %>
+  </div>
+  <%= f.text_field :season_title,
+			:required => true,
+			:size => "50",
+      :label => "Season Number / Name",
+      placeholder: "Example: \"Season 1\" or \"Christmas Special\""
+	%>
+  <%= f.select :rating, 
+			[5, 4, 3, 2, 1], 
+			:required => true,
+			:include_blank => true
+	%>
+  <%= f.date_field :consumed_on,
+      required: true,
+      value: smart_date_field_value(@tv_show_season.consumed_on),
+      max: Time.zone.today,
+      label: "Date Consumed" 
+    %>
+  <p>
+    <% if @tv_show_season.id.blank? == false %>
+      <%= link_to 'Delete Season',
+									@tv_show_season,
+									method: :delete,
+									data: { confirm: 'Sounds dicey! You sure?' }
+					%>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>

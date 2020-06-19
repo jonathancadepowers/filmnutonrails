@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_155415) do
+ActiveRecord::Schema.define(version: 2020_06_18_212422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,12 +98,12 @@ ActiveRecord::Schema.define(version: 2020_06_07_155415) do
 
   create_table "podcast_episodes", force: :cascade do |t|
     t.string "title"
-    t.string "reaction"
     t.datetime "consumed_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "life_log_id"
     t.integer "podcast_id"
+    t.string "episode_title"
   end
 
   create_table "podcasts", force: :cascade do |t|
@@ -150,14 +150,22 @@ ActiveRecord::Schema.define(version: 2020_06_07_155415) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "tv_show_seasons", force: :cascade do |t|
+    t.string "title"
+    t.integer "rating"
+    t.datetime "consumed_on"
+    t.integer "life_log_id"
+    t.integer "tv_show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "season_title"
+  end
+
   create_table "tv_shows", force: :cascade do |t|
     t.string "title"
     t.string "url"
-    t.integer "rating"
-    t.datetime "consumed_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "life_log_id"
   end
 
   create_table "users", force: :cascade do |t|

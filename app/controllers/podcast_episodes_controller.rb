@@ -46,7 +46,7 @@ class PodcastEpisodesController < StandardItemController
   def podcast_episode_params
     params.require(:podcast_episode).permit(
       :title,
-      :reaction,
+      :episode_title,
       :consumed_on,
       :podcast_id,
       :create_new_podcast_option,
@@ -55,12 +55,11 @@ class PodcastEpisodesController < StandardItemController
   end
 
   def build_new_params
-    new_params = podcast_episode_params
-    if new_params[:create_new_podcast_option].to_i == 1
-      new_params.delete :podcast_id
-    else
-      new_params.delete :podcast_attributes
-    end
-    new_params
+    create_new_parent = podcast_episode_params[:create_new_podcast_option].to_i
+    method = create_new_parent == 1 ? "new" : "existing"
+    send(method + "_parent_params",
+         "podcast",
+         podcast_episode_params["episode_title"],
+         podcast_episode_params)
   end
 end

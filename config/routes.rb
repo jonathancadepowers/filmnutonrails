@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   root "blog_posts#all"
+  match "/admin" => "films#index", :as => :admin, via: [:get]
   get "life_logs/all"
   match "life_logs/:day" => "life_logs#day", :as => :life_log_day, via: [:get]
   get "artifacts/create"
@@ -20,11 +21,13 @@ Rails.application.routes.draw do
   get "/blog_posts/all" => "blog_posts#all"
   get "/runs/all" => "runs#all"
   get "/podcast_episodes/all" => "podcast_episodes#all"
+  get "/podcasts/podcast_lookup" => "podcasts#podcast_lookup"
   get "/films/all" => "films#all"
-  get "/tv_shows/all" => "tv_shows#all"
+  get "/tv_show_seasons/all" => "tv_show_seasons#all"
+  get "/tv_shows/tv_show_lookup" => "tv_shows#tv_show_lookup"
   get "/books/all" => "books#all"
   patch "/users/handle_admin_approval" => "users#handle_admin_approval"
-  resources :films, :tv_shows, :books, :users, :artifacts, :runs, :podcast_episodes
+  resources :films, :tv_shows, :tv_show_seasons, :books, :users, :artifacts, :runs, :podcast_episodes, :podcasts
   resources :blog_posts do
     resources :comments
   end

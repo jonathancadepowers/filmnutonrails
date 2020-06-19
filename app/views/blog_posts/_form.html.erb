@@ -12,8 +12,11 @@
       label: "Tags", 
       value: @blog_post.tag_list.join(", ")) 
     %>
-  <%= build_created_at_field(f, action_name, 
-      "Publish Date") 
+  <%= f.date_field :created_at,
+      required: true,
+      value: smart_date_field_value(@blog_post.created_at),
+      max: Time.zone.today,
+      label: "Post Date" 
     %>
   <p>
     <%= f.check_box(:recommended, 

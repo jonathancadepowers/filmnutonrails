@@ -26,10 +26,11 @@
         :size=>"50",
         :required => true
     %>
-    <%= f.date_field :consumed_on,
-        label: "Consumed On",
-        max: Date.today,
-        :required => true
+    <%= f.date_field :created_at,
+      required: true,
+      value: smart_date_field_value(@film.consumed_on),
+      max: Time.zone.today,
+      label: "Date Consumed"
     %>
     <%= f.text_field :directors,
         :size=>"50",

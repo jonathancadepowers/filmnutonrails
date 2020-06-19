@@ -1,34 +1,38 @@
 <%= bootstrap_form_for(@podcast_episode, label_errors: true) do |f| %>
-  <div class="existing_podcast existing_podcast_show">
+  <div class="existing_parent existing_parent_show">
     <%= f.collection_select :podcast_id, 
-      Podcast.all, :id, :title,  
-      :include_blank => true,
-      :label => "Podcast Series" %>
-  </div>
+      Podcast.all, :id, :title,
+      {:include_blank => true, :label => 'Podcast Series'}, 
+      {:class => 'parent_select', :route => "/podcasts/podcast_lookup" } %>
+    <% if @podcast_episode.podcast.nil? == false %>
+    <p>
+      <%= link_to "Edit Podcast Series", 
+        edit_podcast_path(@podcast_episode.podcast), 
+        id: "parent_edit_link", 
+        target: "_blank" %>
+    </p>
+  <% end %>
+  </div>  
   <p>
-    <%= f.check_box :create_new_podcast_option, label: "Create new podcast series?" %>
+    <%= f.check_box :create_new_podcast_option, label: "Create new podcast series?", class: "create_new_parent_option" %>
   </p>
-  <div class="new_podcast new_podcast_hide">
+  <div class="new_parent new_parent_hide">
     <%= f.fields_for :podcast, Podcast.new do |podcast_attributes|%>
       <%= podcast_attributes.text_field :title, label: "New Podcast Series Title" %>
       <%= podcast_attributes.text_field :url, label: "New Podcast Series URL" %>
     <% end %>
   </div>
-  <%= f.text_field :title,
+  <%= f.text_field :episode_title,
 			:size => "50",
       :label => "Episode Title",
       :required => true
 	%>
-  <%= f.select :reaction, 
-			["Not Bad","Loved It!","Hated It!"], 
-			:include_blank => true,
-      :required => true
-	%>
   <%= f.date_field :consumed_on,
-			label: "Consumed On",
-			max: Date.today,
-      :required => true
-	%>
+      required: true,
+      value: smart_date_field_value(@podcast_episode.consumed_on),
+      max: Time.zone.today,
+      label: "Date Consumed" 
+    %>
   <p>
     <% if @podcast_episode.id.blank? == false %>
       <%= link_to 'Delete Podcast Episode',

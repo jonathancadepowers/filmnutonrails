@@ -45,3 +45,35 @@ function textToClipboard (text) {
   document.execCommand('copy')
   document.body.removeChild(dummy)
 }
+
+// Hides/shows the "existing parent" versus "create new parent" fields within a nested admin form.
+$(document).on('change', '.create_new_parent_option', function () {
+  if (this.checked) {
+    $('.new_parent')
+      .removeClass('new_parent_hide')
+      .addClass('new_parent_show')
+    $('.existing_parent')
+      .removeClass('existing_parent_show')
+      .addClass('existing_parent_hide')
+  } else {
+    $('.existing_parent')
+      .removeClass('existing_parent_hide')
+      .addClass('existing_parent_show')
+  }
+})
+
+// Swaps out the "edit parent" link HREF when a user selects a new existing parent with a nested admin form.
+$(document).on('change', '.parent_select', function () {
+  $.ajax({
+    url: $(this).attr('route'),
+    data: { selected_parent_id: this.value },
+    dataType: 'text',
+    success: function (data) {
+      $('#parent_edit_link').replaceWith(data)
+    },
+    error: function (exception) {
+      // Show an error toast.
+      generic_error_toast()
+    }
+  })
+})

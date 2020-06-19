@@ -18,11 +18,13 @@ module StandardItemHelper
   # TODO: There must be a less-hardcody way to handle this.
   def nice_controller_name(controller_name)
     { "films" => "film",
-      "tv_shows" => "show",
+      "tv_shows" => "TV show",
+      "tv_show_seasons" => "TV show season",
       "blog_posts" => "post",
       "artifacts" => "artifact",
       "runs" => "run",
       "podcast_episodes" => "podcast episode",
+      "podcasts" => "podcast series",
       "books" => "book" }[controller_name]
   end
 

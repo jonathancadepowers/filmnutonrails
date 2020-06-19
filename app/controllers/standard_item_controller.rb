@@ -28,4 +28,21 @@ class StandardItemController < ApplicationController
                        .update(display_timestamp: @display_timestamp)
     @object_result && ll_result ? update_success : update_error(@object)
   end
+
+  def new_parent_params(parent_name, child_title, params)
+    params["title"] = params[parent_name + "_attributes"]["title"] +
+                      " - " + child_title
+    params.delete parent_name + "_id"
+    params
+  end
+
+  def existing_parent_params(parent_name, child_title, params)
+    params["title"] = Object.const_get(parent_name.split("_")
+                                                  .map(&:capitalize)
+                                                  .join(""))
+                            .find(params[parent_name + "_id"])
+                            .title + " - " + child_title
+    params.delete parent_name + "_attributes"
+    params
+  end
 end

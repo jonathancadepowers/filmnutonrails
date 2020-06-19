@@ -4,18 +4,27 @@ require "rails-html-sanitizer.rb"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
-		
-		LifeLog.all.each { |l|
-			l.destroy if l.public_send(l.related_object_type).nil?
-		}
-		
+				
 	end
 
-	task get_object_by_attribute: :environment do
+	task :migrate_tv_shows, [:show_id, :seasons, :year, :month, :day, :rating] => :environment do |t, args|
+		show = TvShow.find(args[:show_id])
+		seasons = args[:seasons].to_i
+		consumed_on = DateTime.new(args[:year].to_i,args[:month].to_i,args[:day].to_i)
+		rating = args[:rating].to_i
 
-		film = Film.where(title: ["Dogtooth"])
-		puts film.inspect
-
+		seasons.times do |season_number|
+			season_number = season_number + 1
+			tv_show_season = TvShowSeason.new
+			tv_show_season[:title] = "Season " + season_number.to_s
+			tv_show_season[:consumed_on] = consumed_on
+			tv_show_season[:tv_show_id] = show.id
+			tv_show_season[:season_title] = "#{show.title} - Season #{season_number.to_s}"
+			tv_show_season[:rating] = rating
+			puts tv_show_season.create_life_log(display_timestamp: consumed_on, related_object_type: "tv_show_season")
+			puts tv_show_season.save
+			puts "-----"
+		end
 	end
 
 	task get_object_by_attribute: :environment do

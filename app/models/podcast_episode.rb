@@ -6,7 +6,7 @@ class PodcastEpisode < ApplicationRecord
   belongs_to :life_log
   attr_accessor :create_new_podcast_option
   validates :title,
-            :reaction,
             :consumed_on,
+            :episode_title,
             presence: true
 end

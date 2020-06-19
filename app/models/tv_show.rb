@@ -3,9 +3,7 @@
 class TvShow < ApplicationRecord
   validates :title,
             :url,
-            :rating,
-            :consumed_on,
             presence: true
 
-  belongs_to :life_log
+  has_many :tv_show_seasons, dependent: :nullify
 end

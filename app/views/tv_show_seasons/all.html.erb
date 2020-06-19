@@ -1,0 +1,25 @@
+<% content_for :head do %>
+  <div class="media_teaser">Here's a list of every TV show season I've ever watched and my rating for each. I'm now up to a total of <%= number_with_delimiter(@total_seasons_count, :delimiter => ',') %> seasons, including <%= number_with_delimiter(@seasons_watched_this_year, :delimiter => ',') %> from this year.</div>
+<% end %>
+<% content_for :table_open do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 40%">Show</th>
+        <th scope="col">Season</th>
+        <th scope="col">Watched On</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% end %>
+    <% content_for :body do %>
+      <%= render partial: "single_tv_show_season", collection: @all_tv_show_seasons %>
+    <% end %>
+    <% content_for :table_close do %>
+    </tbody>
+  </table>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render "sidebar" %>
+<% end %>

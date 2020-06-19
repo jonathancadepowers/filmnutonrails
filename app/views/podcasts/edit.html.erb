@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@tv_show, label_errors: false) do |f| %>
+<%= bootstrap_form_for(@podcast, label_errors: false) do |f| %>
   <%= f.text_field :title,
 			:required => true,
 			:size=>"50"
@@ -9,14 +9,14 @@
 			:required => true
 	%>
   <p>
-    <% if @tv_show.id.blank? == false && @seasons_count == 0 %>
-      <%= link_to 'Delete TV Show',
-                @tv_show,
+    <% if @podcast.id.blank? == false && @episodes_count == 0 %>
+      <%= link_to 'Delete Podcast Series',
+                @podcast,
                 method: :delete,
                 data: { confirm: 'Sounds dicey! You sure?' }
         %>
     <% else %>
-      <b>Tip:</b> This TV show cannot be deleted because it has <%= @seasons_count %> logged season(s).
+      <b>Tip:</b> This podcast series cannot be deleted because it has <%= @episodes_count %> logged episode(s).
     <% end %>
   </p>
   <p>

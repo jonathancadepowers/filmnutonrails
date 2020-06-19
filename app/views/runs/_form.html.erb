@@ -15,15 +15,20 @@
       options_for_select(["Home - Peloton", "Hotel - Treadmill"], f.object.location),
 			:required => true,
       :label => "Location"
-	  %>
-  <%= build_created_at_field(f, action_name, "Run Date") %>
+	  %>  
+  <%= f.date_field :created_at,
+      required: true,
+      value: smart_date_field_value(@run.created_at),
+      max: Time.zone.today,
+      label: "Run Date" 
+    %>
   <p>
     <% if @run.id.blank? == false %>
       <%= link_to 'Delete Run',
                     @run,
                     method: :delete,
                     data: { confirm: 'Sounds dicey! You sure?' }
-            %>
+        %>
     <% end %>
   </p>
   <p>
