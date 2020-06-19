@@ -7,10 +7,10 @@
     <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'layout_main', media: 'all' %>
+    <%= stylesheet_link_tag 'prism', media: 'all' %>
     <%= stylesheet_link_tag params[:controller] %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="prism.js"></script>
-    <link rel="stylesheet" type="text/css" href="prism.css">
+    <%= javascript_include_tag "prism" %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   </head>
   <body>
