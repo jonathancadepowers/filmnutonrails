@@ -332,7 +332,7 @@ DEPENDENCIES
   meta_request
   name_of_person (~> 1.1, >= 1.1.1)
   pg
-  prism-rails
+  prism-rails (~> 1.19)
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
