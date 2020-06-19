@@ -324,6 +324,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   csv
   devise (~> 4.2)
+  execjs (~> 2.7)
   font-awesome-rails
   groupdate
   htmlbeautifier

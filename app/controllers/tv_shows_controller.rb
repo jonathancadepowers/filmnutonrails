@@ -35,7 +35,7 @@ class TvShowsController < StandardItemController
     params.require(:tv_show).permit(
       :title,
       :url,
-      :selected_tv_show_id
+      :selected_parent_id
     )
   end
 end

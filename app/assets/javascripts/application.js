@@ -64,7 +64,7 @@ $(document).on('change', '.create_new_parent_option', function () {
 
 // Swaps out the "edit parent" link HREF when a user selects a new existing parent with a nested admin form.
 $(document).on('change', '.parent_select', function () {
-  $.ajax({
+    $.ajax({
     url: $(this).attr('route'),
     data: { selected_parent_id: this.value },
     dataType: 'text',

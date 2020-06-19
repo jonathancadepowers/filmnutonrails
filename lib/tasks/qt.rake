@@ -4,6 +4,14 @@ require "rails-html-sanitizer.rb"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
+
+		all_life_logs = LifeLog.all
+		all_life_logs.each do |ll|
+			
+			if ll.related_object_type == "tv_show"
+				ll.destroy
+			end
+		end
 				
 	end
 

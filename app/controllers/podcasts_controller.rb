@@ -36,6 +36,6 @@ def podcast_params
   params.require(:podcast).permit(
     :title,
     :url,
-    :selected_podcast_id
+    :selected_parent_id
   )
 end
