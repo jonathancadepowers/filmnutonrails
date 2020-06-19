@@ -4,14 +4,6 @@ require "rails-html-sanitizer.rb"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
-
-		all_life_logs = LifeLog.all
-		all_life_logs.each do |ll|
-			
-			if ll.related_object_type == "tv_show"
-				ll.destroy
-			end
-		end
 				
 	end
 
@@ -24,10 +16,10 @@ namespace :qt do
 		seasons.times do |season_number|
 			season_number = season_number + 1
 			tv_show_season = TvShowSeason.new
-			tv_show_season[:title] = "Season " + season_number.to_s
+			tv_show_season[:title] = "#{show.title} - Season #{season_number.to_s}"
 			tv_show_season[:consumed_on] = consumed_on
 			tv_show_season[:tv_show_id] = show.id
-			tv_show_season[:season_title] = "#{show.title} - Season #{season_number.to_s}"
+			tv_show_season[:season_title] = "Season " + season_number.to_s
 			tv_show_season[:rating] = rating
 			puts tv_show_season.create_life_log(display_timestamp: consumed_on, related_object_type: "tv_show_season")
 			puts tv_show_season.save
