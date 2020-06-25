@@ -11,13 +11,13 @@ class ArtifactsController < StandardItemController
   def create
     @artifact = Artifact.new(artifact_params)
     @artifact.artifact_file.attach(params[:artifact][:artifact_file])
-    @artifact.save!
-    super
+    @artifact.save ? create_success : create_error(artifact)
   end
 
   def destroy
     @artifact = Artifact.find(params[:id])
-    super
+    @artifact.destroy ? destroy_success : destroy_error(@artifact)
+    redirect_to(controller: "artifacts", action: "index")
   end
 
   def edit
@@ -30,12 +30,6 @@ class ArtifactsController < StandardItemController
 
   def new
     @artifact = Artifact.new
-  end
-
-  def update
-    @artifact = Artifact.find(params[:id])
-    @result = @artifact.update(artifact_params)
-    super
   end
 
   private
