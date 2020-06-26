@@ -27,10 +27,10 @@
       :label => "Episode Title",
       :required => true
 	%>
-  <%= f.date_field :consumed_on,
+  <%= f.datetime_field :consumed_on,
       required: true,
-      value: smart_date_field_value(@podcast_episode.consumed_on),
-      max: Time.zone.today,
+      value: smart_date_time_field_value(@podcast_episode.consumed_on),
+      max: Time.zone.now,
       label: "Date Consumed" 
     %>
   <p>

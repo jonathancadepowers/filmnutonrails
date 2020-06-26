@@ -11,11 +11,11 @@
   <%= f.text_field(:tag_list, 
       label: "Tags", 
       value: @blog_post.tag_list.join(", ")) 
-    %>
-  <%= f.date_field :created_at,
+    %>  
+  <%= f.datetime_field :created_at,
       required: true,
-      value: smart_date_field_value(@blog_post.created_at),
-      max: Time.zone.today,
+      value: smart_date_time_field_value(@blog_post.created_at),
+      max: Time.zone.now,
       label: "Post Date" 
     %>
   <p>

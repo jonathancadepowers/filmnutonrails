@@ -35,4 +35,12 @@ module ApplicationHelper
       date_value.strftime("%Y-%m-%d")
     end
   end
+
+  def smart_date_time_field_value(date_time_value)
+    if date_time_value.nil?
+      Time.zone.now.strftime("%Y-%m-%dT%H:%M")
+    else
+      date_time_value.strftime("%Y-%m-%dT%H:%M")
+    end
+  end
 end

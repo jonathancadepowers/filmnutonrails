@@ -18,10 +18,10 @@
 			:required => true,
 			:include_blank => true
 	%>
-  <%= f.date_field :consumed_on,
+  <%= f.datetime_field :consumed_on,
       required: true,
-      value: smart_date_field_value(@book.consumed_on),
-      max: Time.zone.today,
+      value: smart_date_time_field_value(@book.consumed_on),
+      max: Time.zone.now,
       label: "Date Consumed" 
     %>
   <p>
