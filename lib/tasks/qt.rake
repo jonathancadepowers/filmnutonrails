@@ -5,12 +5,6 @@ require "deep_merge/rails_compat"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
-
-		existing = {"Hayden James"=>["Nowhere To Go - Max Glyde Remix"], "NAATIONS"=>["Nowhere To Go - Max Glyde Remix"], "Max Glyde"=>["Nowhere To Go - Max Glyde Remix"], "Hailaker"=> ["Coma / Smoke", "Iridesce", "Not Much", "Airmail", "By the Time", "Oh, Boy", "Colorado", "Famous", "Airmail", "Caffeine Rivers", "Attica", "Alumni", "Caffeine Rivers", "Lowswimmer", "Rainmaker"]}
-		new = {}
-
-		existing.deeper_merge!(new)
-		ap existing
 				
 	end
 
