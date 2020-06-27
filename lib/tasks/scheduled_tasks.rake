@@ -1,5 +1,3 @@
-require 'pry'
-
 namespace :scheduled_tasks do
   desc "Retrieves, summarizes, and persits recently played Spotify tracks."
   task get_spotify_tracks: :environment do
