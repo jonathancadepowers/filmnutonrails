@@ -8,7 +8,7 @@ namespace :scheduled_tasks do
 
     filmnut_user = User.find {|u| u.email == "jpowers@gmail.com"}
     spotify_user = RSpotify::User.new(filmnut_user.spotify_user)
-    one_hour_ago = (Time.zone.now - 5.hours).to_datetime.strftime("%Q")    
+    one_hour_ago = (Time.zone.now - 1.hours).to_datetime.strftime("%Q")    
     recent_spotify_activity = spotify_user.recently_played(limit: 50, after: one_hour_ago)    
     
     if recent_spotify_activity.count.positive?
