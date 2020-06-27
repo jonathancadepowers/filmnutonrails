@@ -92,3 +92,5 @@ gem "acts-as-taggable-on", "~> 6.0"
 gem "active_storage_validations"
 gem "chronic_duration", "~> 0.10.6"
 gem 'execjs', '~> 2.7'
+gem 'rspotify', '~> 2.8'
+gem "deep_merge", :require => 'deep_merge/rails_compat'

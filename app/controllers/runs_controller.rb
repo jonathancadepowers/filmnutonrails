@@ -12,7 +12,7 @@ class RunsController < StandardItemController
   def create
     @display_timestamp = run_params[:created_at]
     new_params = build_new_params
-    @run = Run.new(new_params)    
+    @run = Run.new(new_params)
     super
   end
 

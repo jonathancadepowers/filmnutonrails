@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'spotify/spotify'
   root "blog_posts#all"
   match "/admin" => "films#index", :as => :admin, via: [:get]
   get "life_logs/all"
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get "/tv_show_seasons/all" => "tv_show_seasons#all"
   get "/tv_shows/tv_show_lookup" => "tv_shows#tv_show_lookup"
   get "/books/all" => "books#all"
+  get '/auth/spotify/callback', to: 'spotify#callback'
   patch "/users/handle_admin_approval" => "users#handle_admin_approval"
   resources :films, :tv_shows, :tv_show_seasons, :books, :users, :artifacts, :runs, :podcast_episodes, :podcasts
   resources :blog_posts do

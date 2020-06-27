@@ -42,7 +42,7 @@ module StandardItemHelper
 
   def create_success
     flash[:notice] = "The new
-      #{nice_controller_name(controller_name)} was added."      
+      #{nice_controller_name(controller_name)} was added."
     redirect_to(controller: controller_name.to_s, action: "index")
   end
 

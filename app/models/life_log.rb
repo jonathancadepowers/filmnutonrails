@@ -9,6 +9,7 @@ class LifeLog < ApplicationRecord
   has_one :book, dependent: :nullify
   has_one :run, dependent: :nullify
   has_one :podcast_episode, dependent: :nullify
+  has_one :tunes_summary, dependent: :nullify
 
   validates :display_timestamp,
             :related_object_type,

@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">Email Address</th>
       <th scope="col">Approved?</th>
+      <th scope="col">Link Spotify User</th>
     </tr>
   </thead>
   <tbody>
@@ -16,8 +17,13 @@
             <input type="checkbox" user-id="<%= u.id %>" class="form-check-input" style="margin-left: 0px !important;" <%= handle_user_approved_checkbox(u.id) %>>
           <% end %>
         </td>
+        <td>
+          <%= link_to 'Initiate Spotify OAuth Handshake', '/auth/spotify' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to "Link to Register a New User", new_registration_path("user") %>
+<p>
+  <%= link_to "Link to Register a New User", new_registration_path("user") %>
+</p>

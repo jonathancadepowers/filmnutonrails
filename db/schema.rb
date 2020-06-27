@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_212422) do
+ActiveRecord::Schema.define(version: 2020_06_27_130148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,15 @@ ActiveRecord::Schema.define(version: 2020_06_18_212422) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "tunes_summaries", force: :cascade do |t|
+    t.datetime "summary_date"
+    t.json "artists_and_tracks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "life_log_id"
+    t.json "artists_and_tracks_filtered"
+  end
+
   create_table "tv_show_seasons", force: :cascade do |t|
     t.string "title"
     t.integer "rating"
@@ -184,6 +193,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_212422) do
     t.datetime "locked_at"
     t.boolean "approved", default: false, null: false
     t.boolean "pending_approval", default: true
+    t.json "spotify_user", default: {}
     t.index ["approved"], name: "index_users_on_approved"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

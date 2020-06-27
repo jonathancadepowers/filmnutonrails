@@ -24,6 +24,8 @@ module LifeLogsHelper
   def extract_life_log_marker(single_life_log)
     if single_life_log.related_object_type == "podcast_episode"
       "PODCAST"
+    elsif single_life_log.related_object_type == "tunes_summary"
+      "MUSIC"
     else
       single_life_log.related_object_type.tr("_", " ").upcase
     end
@@ -54,5 +56,11 @@ module LifeLogsHelper
   def podcast_episode_google_search_url(podcast_title, episode_title)
     "https://www.google.com/search?q=podcast /
     " + podcast_title + "+" + episode_title
+  end
+
+  def tunes_summary_display(tunes_summary_filtered)
+    tunes_summary_filtered.collect do |v|
+      "<li>#{v[0]} - #{v[1]} songs</li>"
+    end.join("")
   end
 end
