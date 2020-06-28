@@ -60,7 +60,9 @@ module LifeLogsHelper
 
   def tunes_summary_display(tunes_summary_filtered)
     tunes_summary_filtered.collect do |v|
-      "<li>#{v[0]} - #{v[1]} songs</li>"
+      "<li><a target=\"_blank\"
+        href=\"https://www.google.com/search?q=music+#{v[0]}\">#{v[0]}</a>
+        - #{v[1]} songs</li>"
     end.join("")
   end
 end
