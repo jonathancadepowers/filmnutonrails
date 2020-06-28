@@ -28,7 +28,7 @@ class LifeLog < ApplicationRecord
 
   def self.life_logs_set_single_day(day)
     local_time_zone = ApplicationController.helpers.app_time_zone
-    local_offset = [local_time_zone.utc_offset / 3600, local_time_zone.utc_offset/ 60 % 60, local_time_zone.utc_offset % 60].map { |t| t.to_s.rjust(2,'0') }.join(':')
+    local_offset = ApplicationController.helpers.app_time_zone_offset
     day_start = LifeLogable.get_day_boundary(day, "beginning")
                            .change(offset: local_offset)
                            .in_time_zone(Time.zone)

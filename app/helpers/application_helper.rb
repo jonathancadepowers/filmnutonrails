@@ -47,4 +47,15 @@ module ApplicationHelper
   def app_time_zone
     ActiveSupport::TimeZone.new("Central Time (US & Canada)")
   end
+
+  def app_time_zone_offset
+    local_time_zone = ApplicationController.helpers.app_time_zone
+    local_offset = Time.at(local_time_zone.utc_offset).utc.strftime("%I:%M")
+    local_offset = if local_time_zone.utc_offset.to_s.include?("-")
+                     local_offset.prepend("-")
+                   else
+                     local_offset.prepend("+")
+                   end
+    local_offset
+  end
 end
