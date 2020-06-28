@@ -33,7 +33,7 @@ class LifeLog < ApplicationRecord
     day_end = LifeLogable.get_day_boundary(day, "end")
                          .change(offset: "-06:00")
                          .in_time_zone(Time.zone)
-    foo = LifeLog.where(display_timestamp: day_start..day_end)
+    LifeLog.where(display_timestamp: day_start..day_end)
            .order("display_timestamp DESC")
            .group_by_day(&:display_timestamp)
            .group_by_month { |d| d[0] }

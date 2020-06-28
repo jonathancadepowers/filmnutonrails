@@ -26,7 +26,7 @@ namespace :scheduled_tasks do
       end      
 
       # Get today's TunesSummary object, if it exists.
-      today = DateTime.now.in_time_zone(Time.zone).beginning_of_day
+      today = DateTime.now.in_time_zone(Time.zone).beginning_of_day + 12.hours # Sets the identifying timestamp to be in the middle of the day.
       tunes_summary = TunesSummary.find {|ts| ts.summary_date == today}
 
       # Create an updated list of unfiltered artists and tracks by
