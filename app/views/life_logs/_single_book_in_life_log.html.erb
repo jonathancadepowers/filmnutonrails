@@ -1,1 +1,1 @@
-Finished reading <%= link_to object.title, object.url, target: "_blank" %> and gave it <%= object.rating %> stars.
+Finished reading <%= link_to object.title, object.url, target: "_blank" %> and gave it <%= object.rating %> stars. <%= object.life_log.display_timestamp.strftime("%d %B %Y, %-l:%M %p") %>

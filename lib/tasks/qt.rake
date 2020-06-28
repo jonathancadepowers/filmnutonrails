@@ -5,6 +5,15 @@ require "deep_merge/rails_compat"
 namespace :qt do
   desc "Commonly used troubleshooting and testing tasks."
 	task qt: :environment do
+
+		zone = ActiveSupport::TimeZone.new("Central Time (US & Canada)")
+		utc_set = LifeLog.all.limit(15).order("display_timestamp DESC")
+		cst_set = utc_set.map do |l|
+			l.display_timestamp = l.display_timestamp.in_time_zone(zone)
+		end
+
+		ap utc_set.class
+		ap cst_set.class
 				
 	end
 

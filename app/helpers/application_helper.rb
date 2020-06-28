@@ -43,4 +43,8 @@ module ApplicationHelper
       date_time_value.strftime("%Y-%m-%dT%H:%M")
     end
   end
+
+  def app_time_zone
+    ActiveSupport::TimeZone.new("Central Time (US & Canada)")
+  end
 end
