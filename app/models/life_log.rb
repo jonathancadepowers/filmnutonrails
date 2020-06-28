@@ -27,16 +27,17 @@ class LifeLog < ApplicationRecord
   end
 
   def self.life_logs_set_single_day(day)
+    local_time_zone = ApplicationController.helpers.app_time_zone
     day_start = LifeLogable.get_day_boundary(day, "beginning")
-                           .change(offset: "-06:00")
+                           .change(offset: "-06:00") # TODO: Don't hardcode offset.
                            .in_time_zone(Time.zone)
     day_end = LifeLogable.get_day_boundary(day, "end")
-                         .change(offset: "-06:00")
+                         .change(offset: "-06:00") # TODO: Don't hardcode offset.
                          .in_time_zone(Time.zone)
     LifeLog.where(display_timestamp: day_start..day_end)
            .order("display_timestamp DESC")
-           .group_by_day(&:display_timestamp)
-           .group_by_month { |d| d[0] }
+           .group_by_day(time_zone: local_time_zone, &:display_timestamp)
+           .group_by_month(time_zone: local_time_zone) { |d| d[0] }
            .reverse_each
   end
 end
