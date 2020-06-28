@@ -28,11 +28,12 @@ class LifeLog < ApplicationRecord
 
   def self.life_logs_set_single_day(day)
     local_time_zone = ApplicationController.helpers.app_time_zone
+    local_offset = local_time_zone.utc_offset.div(3600).to_s.concat(":00")
     day_start = LifeLogable.get_day_boundary(day, "beginning")
-                           .change(offset: "-06:00") # TODO: Don't hardcode offset.
+                           .change(offset: local_offset)
                            .in_time_zone(Time.zone)
     day_end = LifeLogable.get_day_boundary(day, "end")
-                         .change(offset: "-06:00") # TODO: Don't hardcode offset.
+                         .change(offset: local_offset)
                          .in_time_zone(Time.zone)
     LifeLog.where(display_timestamp: day_start..day_end)
            .order("display_timestamp DESC")
