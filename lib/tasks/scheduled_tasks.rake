@@ -26,12 +26,13 @@ namespace :scheduled_tasks do
       end      
 
       # Get today's TunesSummary object, if it exists.
-      today = DateTime.now.in_time_zone(Time.zone).beginning_of_day + 12.hours # Sets the identifying timestamp to be in the middle of the day.
-      tunes_summary = TunesSummary.find {|ts| ts.summary_date == today}
+      today_start = DateTime.now.in_time_zone(Time.zone).beginning_of_day
+      today_end = DateTime.now.in_time_zone(Time.zone).end_of_day      
+      tunes_summary = TunesSummary.where(summary_date: today_start..today_end)
 
       # Create an updated list of unfiltered artists and tracks by
       # merging together new and existing data.
-      final_artists_and_tracks = if tunes_summary.nil?
+      final_artists_and_tracks = if tunes_summary.empty?
         new_artists_and_tracks       
       else
         tunes_summary.artists_and_tracks.deeper_merge(new_artists_and_tracks)
@@ -45,15 +46,15 @@ namespace :scheduled_tasks do
       end
 
       # Persist outputs to the database.
-      if tunes_summary.nil?
+      if tunes_summary.empty?
         tunes_summary = TunesSummary.new
-        tunes_summary.summary_date = today
+        tunes_summary.summary_date = Time.zone.now
         tunes_summary.artists_and_tracks = final_artists_and_tracks
         tunes_summary.artists_and_tracks_filtered = final_artists_and_tracks_filtered
         # Only create a new LifeLog if final_artists_and_tracks_filtered is not null.
         if final_artists_and_tracks_filtered.empty? == false
           tunes_summary.create_life_log(
-            display_timestamp: today,
+            display_timestamp: Time.zone.now,
             related_object_type: "tunes_summary"
           )
         end  
