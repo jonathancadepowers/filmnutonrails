@@ -28,11 +28,11 @@ namespace :scheduled_tasks do
       # Get today's TunesSummary object, if it exists.
       today_start = DateTime.now.in_time_zone(Time.zone).beginning_of_day
       today_end = DateTime.now.in_time_zone(Time.zone).end_of_day      
-      tunes_summary = TunesSummary.where(summary_date: today_start..today_end)
+      tunes_summary = TunesSummary.where(summary_date: today_start..today_end).first
 
       # Create an updated list of unfiltered artists and tracks by
       # merging together new and existing data.
-      final_artists_and_tracks = if tunes_summary.empty?
+      final_artists_and_tracks = if tunes_summary.nil?
         new_artists_and_tracks       
       else
         tunes_summary.artists_and_tracks.deeper_merge(new_artists_and_tracks)
@@ -46,13 +46,13 @@ namespace :scheduled_tasks do
       end
 
       # Persist outputs to the database.
-      if tunes_summary.empty?
+      if tunes_summary.nil?
         tunes_summary = TunesSummary.new
         tunes_summary.summary_date = Time.zone.now
         tunes_summary.artists_and_tracks = final_artists_and_tracks
         tunes_summary.artists_and_tracks_filtered = final_artists_and_tracks_filtered
         # Only create a new LifeLog if final_artists_and_tracks_filtered is not null.
-        if final_artists_and_tracks_filtered.empty? == false
+        if final_artists_and_tracks_filtered.nil? == false
           tunes_summary.create_life_log(
             display_timestamp: Time.zone.now,
             related_object_type: "tunes_summary"
@@ -62,7 +62,7 @@ namespace :scheduled_tasks do
       else
         tunes_summary.update(artists_and_tracks: final_artists_and_tracks, artists_and_tracks_filtered: final_artists_and_tracks_filtered)
         # Only create a new LifeLog if (a) it doesn't already exist, and (b) final_artists_and_tracks_filtered is not null.
-        if tunes_summary.life_log_id.nil? == true && final_artists_and_tracks_filtered.empty? == false
+        if tunes_summary.life_log_id.nil? == true && final_artists_and_tracks_filtered.nil? == false
           tunes_summary.create_life_log(
             display_timestamp: today,
             related_object_type: "tunes_summary"
