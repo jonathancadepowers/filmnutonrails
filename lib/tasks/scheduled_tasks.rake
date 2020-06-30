@@ -26,9 +26,6 @@ namespace :scheduled_tasks do
       end      
 
       # Get today's TunesSummary object, if it exists.
-      # today_start = DateTime.now.in_time_zone(Time.zone).beginning_of_day
-      # today_end = DateTime.now.in_time_zone(Time.zone).end_of_day
-      # tunes_summary = TunesSummary.where(summary_date: today_start..today_end).first
       local_time_zone = ApplicationController.helpers.app_time_zone_as_zone
       today_year_local = DateTime.now.in_time_zone(local_time_zone).strftime("%Y").to_i
       today_month_local = DateTime.now.in_time_zone(local_time_zone).strftime("%m").to_i
