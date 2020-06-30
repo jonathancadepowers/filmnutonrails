@@ -17,7 +17,7 @@ class LifeLog < ApplicationRecord
 
   # Converts life logs to app's default time zone before grouping them.
   def self.life_logs_set(count)
-    local_time_zone = ApplicationController.helpers.app_time_zone
+    local_time_zone = ApplicationController.helpers.app_time_zone_as_zone
     LifeLog.all
            .limit(count)
            .order("display_timestamp DESC")
@@ -29,7 +29,7 @@ class LifeLog < ApplicationRecord
 
   # Converts life logs to the app's default time zone before grouping them.
   def self.life_logs_set_single_day(day)
-    local_time_zone = ApplicationController.helpers.app_time_zone
+    local_time_zone = ApplicationController.helpers.app_time_zone_as_zone
     local_offset = ApplicationController.helpers.app_time_zone_offset
     day_beg = LifeLogable.local_to_utc_boundary(day, "beginning", local_offset)
     day_end = LifeLogable.local_to_utc_boundary(day, "end", local_offset)

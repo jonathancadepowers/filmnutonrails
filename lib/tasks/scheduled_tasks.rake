@@ -26,9 +26,17 @@ namespace :scheduled_tasks do
       end      
 
       # Get today's TunesSummary object, if it exists.
-      today_start = DateTime.now.in_time_zone(Time.zone).beginning_of_day
-      today_end = DateTime.now.in_time_zone(Time.zone).end_of_day      
-      tunes_summary = TunesSummary.where(summary_date: today_start..today_end).first
+      # today_start = DateTime.now.in_time_zone(Time.zone).beginning_of_day
+      # today_end = DateTime.now.in_time_zone(Time.zone).end_of_day
+      # tunes_summary = TunesSummary.where(summary_date: today_start..today_end).first
+      local_time_zone = ApplicationController.helpers.app_time_zone_as_zone
+      today_year_local = DateTime.now.in_time_zone(local_time_zone).strftime("%Y").to_i
+      today_month_local = DateTime.now.in_time_zone(local_time_zone).strftime("%m").to_i
+      today_day_local = DateTime.now.in_time_zone(local_time_zone).strftime("%d").to_i
+      today_start_utc = DateTime.new(today_year_local,today_month_local,today_day_local,0,0,0).in_time_zone(Time.zone)
+      today_midday_utc = DateTime.new(today_year_local,today_month_local,today_day_local,12,0,0).in_time_zone(Time.zone)
+      today_end_utc = DateTime.new(today_year_local,today_month_local,today_day_local,23,59,59).in_time_zone(Time.zone)
+      tunes_summary = TunesSummary.where(summary_date: today_start_utc..today_end_utc).first
 
       # Create an updated list of unfiltered artists and tracks by
       # merging together new and existing data.
@@ -48,13 +56,13 @@ namespace :scheduled_tasks do
       # Persist outputs to the database.
       if tunes_summary.nil?
         tunes_summary = TunesSummary.new
-        tunes_summary.summary_date = Time.zone.now
+        tunes_summary.summary_date = today_midday_utc
         tunes_summary.artists_and_tracks = final_artists_and_tracks
         tunes_summary.artists_and_tracks_filtered = final_artists_and_tracks_filtered
         # Only create a new LifeLog if final_artists_and_tracks_filtered is not null.
         if final_artists_and_tracks_filtered.nil? == false
           tunes_summary.create_life_log(
-            display_timestamp: Time.zone.now,
+            display_timestamp: today_midday_utc,
             related_object_type: "tunes_summary"
           )
         end  
@@ -64,7 +72,7 @@ namespace :scheduled_tasks do
         # Only create a new LifeLog if (a) it doesn't already exist, and (b) final_artists_and_tracks_filtered is not null.
         if tunes_summary.life_log_id.nil? == true && final_artists_and_tracks_filtered.nil? == false
           tunes_summary.create_life_log(
-            display_timestamp: today,
+            display_timestamp: today_midday_utc,
             related_object_type: "tunes_summary"
           )
         end

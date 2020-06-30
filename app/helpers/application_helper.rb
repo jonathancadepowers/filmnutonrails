@@ -44,18 +44,21 @@ module ApplicationHelper
     end
   end
 
-  def app_time_zone
-    ActiveSupport::TimeZone.new("Central Time (US & Canada)")
+  def app_time_zone_as_string
+    "America/Chicago"
+  end
+
+  def app_time_zone_as_zone
+    ActiveSupport::TimeZone.new(app_time_zone_as_string)
   end
 
   def app_time_zone_offset
-    local_time_zone = ApplicationController.helpers.app_time_zone
-    local_offset = Time.at(local_time_zone.utc_offset).utc.strftime("%I:%M")
-    local_offset = if local_time_zone.utc_offset.to_s.include?("-")
-                     local_offset.prepend("-")
-                   else
-                     local_offset.prepend("+")
-                   end
-    local_offset
+    current = TZInfo::Timezone.get(app_time_zone_as_string).current_period
+    offset_in_hours = (current.utc_total_offset / 3600)
+    if offset_in_hours.negative?
+      format("%02d", (offset_in_hours * -1)).prepend("-") + ":00"
+    else
+      format("%02d", offset_in_hours).prepend("+") + ":00"
+    end
   end
 end
