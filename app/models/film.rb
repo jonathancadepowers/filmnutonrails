@@ -32,7 +32,8 @@ class Film < ApplicationRecord
   end
 
   def self.build_watched_on_chart
-    data = Film.group_by_year(:consumed_on)
+    local_zone = ApplicationController.helpers.app_time_zone_as_string
+    data = Film.group_by_year(:consumed_on, time_zone: local_zone)
                .count
                .transform_keys do |key|
       key.year.to_s
@@ -42,8 +43,9 @@ class Film < ApplicationRecord
   end
 
   def self.build_films_by_dow_chart
+    local_zone = ApplicationController.helpers.app_time_zone_as_string
     Film.where("consumed_on > ?", DateTime.new(2008, 9, 5, 0, 0, 0))
-        .group_by_day_of_week(:consumed_on)
+        .group_by_day_of_week(:consumed_on, time_zone: local_zone)
         .count.transform_keys do |key|
       Date::DAYNAMES[key]
     end

@@ -14,7 +14,8 @@ class BlogPost < ApplicationRecord
   acts_as_taggable_on :tags
 
   def self.posts_by_year
-    BlogPost.group_by_year(:created_at)
+    local_zone = ApplicationController.helpers.app_time_zone_as_string
+    BlogPost.group_by_year(:created_at, time_zone: local_zone)
             .count.select { |_year, count| count.positive? }
             .transform_keys { |key| key.strftime("%Y") }
   end
