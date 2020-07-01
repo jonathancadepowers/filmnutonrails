@@ -5,7 +5,7 @@ class BlogPostsController < StandardItemController
   before_action :hydrate_sidebar_data, only: %i[all show archives year tag]
 
   def all
-    @all_blog_posts = BlogPost.all.order("created_at DESC").limit(10)
+    @all_blog_posts = BlogPost.all.order("created_at DESC").limit(25)
     render layout: "main"
   end
 
