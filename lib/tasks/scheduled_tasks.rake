@@ -57,7 +57,7 @@ namespace :scheduled_tasks do
         tunes_summary.artists_and_tracks = final_artists_and_tracks
         tunes_summary.artists_and_tracks_filtered = final_artists_and_tracks_filtered
         # Only create a new LifeLog if final_artists_and_tracks_filtered is not null.
-        if final_artists_and_tracks_filtered.nil? == false
+        if final_artists_and_tracks_filtered.empty? == false
           tunes_summary.create_life_log(
             display_timestamp: today_midday_utc,
             related_object_type: "tunes_summary"
