@@ -18,7 +18,7 @@ class LifeLog < ApplicationRecord
   # Converts life logs to app's default time zone before grouping them.
   def self.life_logs_set(count)
     local_time_zone = ApplicationController.helpers.app_time_zone_as_zone
-    LifeLog.all
+    LifeLog.where("display_timestamp > ?", Time.zone.parse("2020-06-23 00:00"))
            .limit(count)
            .order("display_timestamp DESC")
            .group_by_day(time_zone: local_time_zone, &:display_timestamp)
