@@ -2,7 +2,8 @@
   <h2 class="blog_post_title"><%= single_blog_post.title %></h2>
   <div class="blog_post_timestamp">
     <%= fa_icon "calendar" %>
-    <%= link_to post_date_in_local_zone(single_blog_post.created_at), single_blog_post %>
+    <%=  %>
+    <%= link_to datetime_to_local(single_blog_post.created_at,"%b %d, %Y at %-l%P"), single_blog_post %>
   </div>
   <%# TODO: Direclty outputting the raw "body" content below is causing a Brakeman warning. %>
   <%= single_blog_post.body.html_safe %>

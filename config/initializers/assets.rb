@@ -32,6 +32,7 @@ Rails.application.config.assets.precompile += %w( podcast_episodes.css )
 Rails.application.config.assets.precompile += %w( podcasts.css )
 Rails.application.config.assets.precompile += %w( prism.css )
 Rails.application.config.assets.precompile += %w( prism.js )
+Rails.application.config.assets.precompile += %w( fasts.css )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

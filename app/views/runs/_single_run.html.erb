@@ -3,12 +3,12 @@
     <%= single_run.miles %>
   </td>
   <td>
-    <%= format_run_time_long(single_run.run_time) %>
+    <%= format_time_long(single_run.run_time) %>
   </td>
   <td>
     <%= single_run.location %>
   </td>
   <td>
-    <%= single_run.created_at.strftime("%b %-d, %Y") %>
+    <%= datetime_to_local(single_run.created_at,"%b %d, %Y at %-l%P") %>
   </td>
 </tr>

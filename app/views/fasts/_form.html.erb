@@ -1,0 +1,27 @@
+<%= bootstrap_form_for(@fast, label_errors: false) do |f| %>
+  <%= f.text_field :time_fasted,
+    :required => true,
+    :placeholder => "HH:MM:SS",
+    :label => "Time Fasted",
+    :value => populate_time_field(@fast,"time_fasted"),
+    :pattern => '([0-9]?[0-9]\d):([0-5]\d):([0-5]\d)'
+    %>
+  <%= f.datetime_field :created_at,
+      required: true,
+      value: smart_date_time_field_value(@fast.created_at),
+      max: Time.zone.now,
+      label: "Date Fast Completed" 
+    %>
+  <p>
+    <% if @fast.id.blank? == false %>
+      <%= link_to 'Delete Fast',
+                    @fast,
+                    method: :delete,
+                    data: { confirm: 'Sounds dicey! You sure?' }
+        %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>

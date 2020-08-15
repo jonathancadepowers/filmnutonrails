@@ -8,14 +8,14 @@
     :required => true,
     :placeholder => "MM:SS",
     :label => "Time to Finish Run",
-    :value => populate_run_time_in_form(@run),
+    :value => populate_time_field(@run,"run_time"),
     :pattern => "(0?[1-9]|[1-5][0-9]):(0?[0-9]|[0-5][0-9])"
     %>
   <%= f.select :location, 
       options_for_select(["Home - Peloton", "Hotel - Treadmill"], f.object.location),
 			:required => true,
       :label => "Location"
-	  %>  
+	  %>
   <%= f.datetime_field :created_at,
       required: true,
       value: smart_date_time_field_value(@run.created_at),

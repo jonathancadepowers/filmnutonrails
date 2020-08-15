@@ -1,0 +1,23 @@
+<% content_for :head do %>
+  <div class="media_teaser">I'm a big beleiver in fasting, to both maintain a healthy weight and <%= link_to "extend healthspan", "https://www.youtube.com/watch?v=rOPcdoYLjJw", target: "_blank" %>. Below is a reverse-chronological list of every fast that I've ever completed.</div>
+<% end %>
+<% content_for :table_open do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Time Spent Fasting</th>
+        <th scope="col">Fast Ended</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% end %>
+    <% content_for :body do %>
+      <%= render partial: "single_fast", collection: @all_fasts %>
+    <% end %>
+    <% content_for :table_close do %>
+    </tbody>
+  </table>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render "application/main_sidebar" %>
+<% end %>

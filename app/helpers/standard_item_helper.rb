@@ -25,6 +25,7 @@ module StandardItemHelper
       "runs" => "run",
       "podcast_episodes" => "podcast episode",
       "podcasts" => "podcast series",
+      "fasts" => "fast",
       "books" => "book" }[controller_name]
   end
 

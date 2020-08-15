@@ -61,4 +61,21 @@ module ApplicationHelper
       format("%02d", offset_in_hours).prepend("+") + ":00"
     end
   end
+
+  def populate_time_field(object, time_field_name)
+    if object.new_record?
+      object.public_send(time_field_name)
+    else
+      ChronicDuration.output(object.public_send(time_field_name),
+                             format: :chrono)
+    end
+  end
+
+  def format_time_long(time)
+    ChronicDuration.output(time, format: :long)
+  end
+
+  def datetime_to_local(datetime, format)
+    datetime.in_time_zone(app_time_zone_as_zone).strftime(format)
+  end
 end

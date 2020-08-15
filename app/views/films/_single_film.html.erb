@@ -9,7 +9,7 @@
     <%= single_film.release_year %>
   </td>
   <td>
-    <%= single_film.consumed_on.strftime("%b %-d, %Y") %>
+    <%= datetime_to_local(single_film.consumed_on,"%b %d, %Y") %>
   </td>
   <td>
     <% single_film.rating.times do %>

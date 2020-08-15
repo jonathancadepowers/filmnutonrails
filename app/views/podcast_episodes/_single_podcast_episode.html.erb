@@ -6,6 +6,6 @@
     <%= single_podcast_episode.title %>
   </td>
   <td>
-    <%= single_podcast_episode.consumed_on.strftime("%b %-d, %Y") %>
+    <%= datetime_to_local(single_podcast_episode.consumed_on,"%b %d, %Y") %>
   </td>
 </tr>
